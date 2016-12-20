@@ -1,0 +1,9 @@
+#light-switches {
+    list-style: none;
+
+}
+
+button.enabled {
+    font-weight: bold;
+    color: darkred;
+}

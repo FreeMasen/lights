@@ -1,0 +1,15 @@
+<div>
+    <ul id="light-switches">
+        <li *ngFor="let switch of switches">
+            <md-card>
+                <md-card-title>
+                    {{switch.name}}
+                </md-card-title>
+                <md-card-content>
+                    <button md-raised-button class="on-button" [ngClass]="{'enabled': switch.on}">ON</button>
+                    <button md-raised-button class="off-button" [ngClass]="{'enabled': !switch.on}">OFF</button>
+                </md-card-content>
+            </md-card>
+        </li>
+    </ul>  
+</div>
