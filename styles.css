@@ -1,0 +1,13 @@
+#app-view {
+    width: 90%;
+    margin: auto;
+    height: 98%;
+}
+
+#title {
+    font-family: sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 2px auto 0;
+    border: grey solid 1px;
+}

@@ -1,2 +1,17 @@
-<h1>Lights</h1>
-<router-outlet></router-outlet>
+<div id="full-content">
+    <md-sidenav-container>
+        <md-sidenav #start (open)="start.close()">
+            Start Sidenav.
+            <br>
+            <button md-button $closeStartButton (click)="start.close()">Close</button>
+        </md-sidenav>
+        <md-sidenav #end align="end">
+            End Sidenav.
+            <button md-button (click="end.close()")>Close</button>
+        </md-sidenav>
+    </md-sidenav-container>
+    <div id="app-view">
+        <h1 id="title">Lights</h1>
+            <router-outlet></router-outlet>
+    </div>
+</div>

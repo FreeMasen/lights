@@ -1,33 +1,33 @@
 const express = require('express')
 const app = express()
 const {exec} = require('child_process')
+const morgan = require('morgan')
+app.use(morgan('dev'))
 
-const switches = {
-    "1":{
-        on: 1,
-        off: 0
-    },
-    "2":{
-        on: 1,
-        off: 0
-    },
-    "3":{
-        on: 1,
-        off: 0
-    },
-    "4":{
-        on: 1,
-        off: 0
-    },
-    "5":{
-        on: 1,
-        off: 0
-    }
-}
+const mockLights = [
+    {name: 'Christmas Tree',
+    id: 1,
+    on: true},
+    {name: 'Not In Use',
+    id: 2,
+    on: false},
+    {name: 'Not In Use',
+    id: 3,
+    on: false},
+    {name: 'Breakfast Nook',
+    id: 4,
+    on: false},
+    {name: 'Craft Room',
+    id: 5,
+    on: false}
+]
 
 app.use(express.static(`${__dirname}`))
 app.use("/dashboard", express.static(`${__dirname}`))
 
+app.get('/switches', (req, res) => {
+    res.send(JSON.stringify(mockLights))
+})
 
 app.post('/:id/:newState', (req, res) => {
     let id
@@ -42,8 +42,12 @@ app.post('/:id/:newState', (req, res) => {
     } else {
         res.status(404).send()
     }
-    exec(`codesend ${switches[id][state]}`)
-    res.send(`{switch: ${id}, state: ${newState}}`)
+    mockLights.forEach((light) => {
+        if (light.id == id) {
+            light.state = state
+        }
+    })
+    res.send(`{switch: ${id}, state: ${state}}`)
 })
 
 app.listen('9999', () => {

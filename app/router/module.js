@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var component_1 = require('../dashboard/component');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var component_1 = require("../dashboard/component");
 var routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: component_1.Dashboard }
@@ -18,14 +18,14 @@ var routes = [
 var Router = (function () {
     function Router() {
     }
-    Router = __decorate([
-        core_1.NgModule({
-            imports: [router_1.RouterModule.forRoot(routes)],
-            exports: [router_1.RouterModule]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], Router);
     return Router;
 }());
+Router = __decorate([
+    core_1.NgModule({
+        imports: [router_1.RouterModule.forRoot(routes)],
+        exports: [router_1.RouterModule]
+    }),
+    __metadata("design:paramtypes", [])
+], Router);
 exports.Router = Router;
 //# sourceMappingURL=module.js.map

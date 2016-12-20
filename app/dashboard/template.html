@@ -5,8 +5,8 @@
                     {{switch.name}}
                 </md-card-title>
                 <md-card-content>
-                    <button md-raised-button class="on-button" [ngClass]="{'enabled': switch.on}" [ngClick]="clicked('on', switch.id)">ON</button>
-                    <button md-raised-button class="off-button" [ngClass]="{'enabled': !switch.on}"[ngClick]="clicked('off', switch.id)">OFF</button>
+                    <button md-raised-button class="on-button" [ngClass]="{'enabled': switch.on}" (click)="flip(switch, 1)">ON</button>
+                    <button md-raised-button class="off-button" [ngClass]="{'enabled': !switch.on}" (click)="flip(switch, 0)">OFF</button>
                 </md-card-content>
             </md-card>
     </div>  
