@@ -16,12 +16,10 @@ var Dashboard = (function () {
     }
     Dashboard.prototype.ngOnInit = function () {
         var _this = this;
-        console.log('ngOnInit');
         this.switcher
             .getSwitches()
             .then(function (switches) {
             _this.switches = switches;
-            console.log('switches.then', switches);
         })
             .catch(function (_) {
             _this.switches = [];

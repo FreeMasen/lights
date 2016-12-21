@@ -21,7 +21,6 @@ var Switcher = (function () {
             .get("/switches")
             .toPromise()
             .then(function (response) {
-            console.log(response);
             var data = response.json();
             if (!data)
                 throw new Error('no data in response');
