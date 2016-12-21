@@ -1,0 +1,14 @@
+<button md-button color="accent">Back</button>
+<md-card class="detail-view">
+    <h1>{{switch.Name}}</h1>
+    <h3 class="timers">Timers</h3>
+    <md-card class="timer" *ngFor="let timer of switch.timers">
+        <form>
+            <input type="time" md-input placeholder="time"/>
+        <select id="on-off">
+            <option value="on">On</option>
+            <option vlaue="Off">Off</option>
+        </select>
+        </form>
+    </md-card>
+</md-card>

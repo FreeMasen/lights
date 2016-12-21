@@ -28,6 +28,14 @@ var Switcher = (function () {
         })
             .catch(this.handleError);
     };
+    Switcher.prototype.get = function (id) {
+        return this.getSwitches()
+            .then(function (switches) {
+            return switches.find(function (sw) {
+                return sw.id === id;
+            });
+        });
+    };
     Switcher.prototype.flip = function (sw, direction) {
         return this.http.post("/" + sw.id + "/" + direction, null)
             .toPromise()

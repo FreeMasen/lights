@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var component_1 = require("../dashboard/component");
+var component_2 = require("../switchDetail/component");
 var routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-    { path: 'dashboard', component: component_1.Dashboard }
+    { path: 'dashboard', component: component_1.Dashboard },
+    { path: 'switch/:id', component: component_2.SwitchDetail }
 ];
 var Router = (function () {
     function Router() {

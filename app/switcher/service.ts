@@ -23,6 +23,15 @@ export class Switcher {
             .catch(this.handleError)
     }
 
+    get(id: number) : Promise<Switch> {
+        return this.getSwitches()
+            .then(switches => {
+                return switches.find(sw => {
+                    return sw.id === id
+                })
+            })
+    }
+
     flip(sw: Switch, direction: Direction): Promise<Switch> {
         return this.http.post(`/${sw.id}/${direction}`, null)
             .toPromise()
