@@ -3,7 +3,7 @@
     <h1>{{selectedSwitch.name}}</h1>
     <h3 class="timers">Timers</h3>
     <button md-mini-fab color="primary" (click)="addTimer()"><md-icon>add</md-icon></button>
-    <md-card class="timer" *ngFor="let timer of selectedSwitch.timers | async">
+    <md-card class="timer" *ngFor="let timer of selectedSwitch.timers">
         <form>
             <input type="time" md-input placeholder="time"/>
             <md-slide-toggle color="accent" [(ngModel)]="timer.isOn">
