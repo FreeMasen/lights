@@ -1,9 +1,9 @@
 <div>
     <div id="light-switches">
-            <md-card class="switch" *ngFor="let switch of switches">
+            <md-card class="switch" *ngFor="let switch of switches" color="accent">
                 <md-card-title class="title-line">
                     <h3>{{switch.name}}</h3>
-                    <button md-mini-fab class="set-button" [routerLink]="['switch', switch.id]" color="accent">
+                    <button md-mini-fab class="set-button" (click)=openDetail(switch.id) color="primary">
                         <md-icon>settings</md-icon>
                     </button>
                 </md-card-title>
