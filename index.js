@@ -14,35 +14,52 @@ const mockLights = [
     codes: {
         '1': '4543795',
         '0': '4543804'
-    }},
+    }, 
+    timers: [
+        {isOn: false,
+        time: '20:00'}
+    ]},
     {name: 'Not In Use',
     id: 2,
     on: false,
     codes: {
         '1': '4543939',
         '0': '44543948'
-    }},
+    },
+    timers: [
+        {isOn: true,
+            time: '6:00'}
+    ]},
     {name: 'Not In Use',
     id: 3,
     on: false,
     codes: {
         '1': '4544359',
         '0': '4544268'
-    }},
+    },
+    timers: [
+
+    ]},
     {name: 'Breakfast Nook',
     id: 4,
     on: false,
     codes: {
         '1': '4545795',
         '0': '4545804'
-    }},
+    },
+    timers: [
+
+    ]},
     {name: 'Craft Room',
     id: 5,
     on: false,
     codes: {
         '1': '4551939',
         '0': '4551948'
-    }}
+    },
+    timers: [
+
+    ]}
 ]
 
 app.use(express.static(`${__dirname}`))
