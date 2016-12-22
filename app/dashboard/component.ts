@@ -9,7 +9,7 @@ import { Switcher } from '../switcher/service'
 import { Switch } from '../models/switch'
 import { Direction } from '../models/direction'
 @Component({
-    moduleId: module.id,
+    //moduleId: module.id,
     selector: '<dashboard>',
     templateUrl: 'app/dashboard/template.html',
     styleUrls: ['app/dashboard/style.css']
@@ -47,7 +47,7 @@ export class Dashboard implements OnInit {
             })
     }
 
-    goToSwitch(id: number): void {
+    openDetail(id: number): void {
         this.router.navigate(['/switch', id])
     }
 }
