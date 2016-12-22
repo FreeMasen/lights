@@ -9,9 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var service_1 = require("../switcher/service");
 var Dashboard = (function () {
-    function Dashboard(switcher) {
+    function Dashboard(router, switcher) {
+        this.router = router;
         this.switcher = switcher;
     }
     Dashboard.prototype.ngOnInit = function () {
@@ -40,15 +42,20 @@ var Dashboard = (function () {
             _this.message = "Error updating switch";
         });
     };
+    Dashboard.prototype.goToSwitch = function (id) {
+        this.router.navigate(['/switch', id]);
+    };
     return Dashboard;
 }());
 Dashboard = __decorate([
     core_1.Component({
+        moduleId: module.id,
         selector: '<dashboard>',
         templateUrl: 'app/dashboard/template.html',
         styleUrls: ['app/dashboard/style.css']
     }),
-    __metadata("design:paramtypes", [service_1.Switcher])
+    __metadata("design:paramtypes", [router_1.Router,
+        service_1.Switcher])
 ], Dashboard);
 exports.Dashboard = Dashboard;
 //# sourceMappingURL=component.js.map
