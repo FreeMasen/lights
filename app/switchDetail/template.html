@@ -7,8 +7,8 @@
         <form>
             <input type="time" md-input placeholder="time"/>
             <md-slide-toggle color="accent" [(ngModel)]="timer.isOn">
-                <p [ngIf]="timer.isOn">On</p>
-                <p [ngIf]="!timer.isOn">Off</p>
+                <p *ngIf="timer.isOn">On</p>
+                <p *ngIf="!timer.isOn">Off</p>
             </md-slide-toggle>
         </form>
     </md-card>
