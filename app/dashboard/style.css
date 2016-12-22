@@ -14,6 +14,21 @@ button.enabled {
 }
 
 .switch {
-    width: 30%;
+    width: 40%;
     margin: 10px;
+}
+
+.title-line {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.title-line h1 {
+    margin: auto 0;
+}
+
+.set-button {
+    margin: auto 0;
 }
