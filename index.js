@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express()
-
+const morgan = require('morgan')('dev', {
+    skip: function (req, res) { return req.method.toLowerCase() == 'get'
+                                        && req.url.includes('node_modules')}
+})
+app.use(morgan)
 const flip = require('./src/flip.js')
 
 const mockLights = [
@@ -8,36 +12,36 @@ const mockLights = [
     id: 1,
     on: true,
     codes: {
-        on: '4543795',
-        off: '4543804'
+        '1': '4543795',
+        '0': '4543804'
     }},
     {name: 'Not In Use',
     id: 2,
     on: false,
     codes: {
-        on: '4543939',
-        off: '44543948'
+        '1': '4543939',
+        '0': '44543948'
     }},
     {name: 'Not In Use',
     id: 3,
     on: false,
     codes: {
-        on: '4544359',
-        off: '4544268'
+        '1': '4544359',
+        '0': '4544268'
     }},
     {name: 'Breakfast Nook',
     id: 4,
     on: false,
     codes: {
-        on: '4545795',
-        off: '4545804'
+        '1': '4545795',
+        '0': '4545804'
     }},
     {name: 'Craft Room',
     id: 5,
     on: false,
     codes: {
-        on: '4551939',
-        off: '4551948'
+        '1': '4551939',
+        '0': '4551948'
     }}
 ]
 
