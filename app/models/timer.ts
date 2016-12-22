@@ -1,5 +1,4 @@
-import { Direction } from './direction'
 export class Timer {
-    direction: Direction
+    isOn: boolean
     time: Date
 }

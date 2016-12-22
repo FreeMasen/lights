@@ -3,11 +3,7 @@
             <md-card class="switch" *ngFor="let switch of switches" color="accent">
                 <md-card-title class="title-line">
                     <h3>{{switch.name}}</h3>
-<<<<<<< HEAD
-                    <button md-mini-fab class="set-button" (click)="goToSwitc(switch.id)" color="accent">
-=======
                     <button md-mini-fab class="set-button" (click)=openDetail(switch.id) color="primary">
->>>>>>> 7dcffba9ddfe0238cfc1d025d7f7b15018c77da6
                         <md-icon>settings</md-icon>
                     </button>
                 </md-card-title>

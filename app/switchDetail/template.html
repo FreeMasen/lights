@@ -6,10 +6,10 @@
     <md-card class="timer" *ngFor="let timer of selectedSwitch.timers | async">
         <form>
             <input type="time" md-input placeholder="time"/>
-        <select id="on-off">
-            <option value="on">On</option>
-            <option vlaue="Off">Off</option>
-        </select>
+            <md-slide-toggle color="accent" [(ngModel)]="timer.isOn">
+                <p [ngIf]="timer.isOn">On</p>
+                <p [ngIf]="!timer.isOn">Off</p>
+            </md-slide-toggle>
         </form>
     </md-card>
 </md-card>
