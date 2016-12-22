@@ -8,6 +8,7 @@ import { Switcher } from '../switcher/service'
 import { Switch } from '../models/switch'
 
 @Component({
+    moduleId: module.id,
     selector: '<switch-detail>',
     templateUrl: 'app/switchDetail/template.html',
     styleUrls: ['app/switchDetail/style.css']
