@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 
 import { Observable } from 'rxjs'
 
@@ -8,12 +9,16 @@ import { Switcher } from '../switcher/service'
 import { Switch } from '../models/switch'
 import { Direction } from '../models/direction'
 @Component({
+    moduleId: module.id,
     selector: '<dashboard>',
     templateUrl: 'app/dashboard/template.html',
     styleUrls: ['app/dashboard/style.css']
 })
 export class Dashboard implements OnInit { 
-    constructor(private switcher: Switcher) {}
+    constructor(
+        private router: Router,
+        private switcher: Switcher
+    ) {}
     switches: Switch[]
     message: string
     ngOnInit(): void {
@@ -40,5 +45,9 @@ export class Dashboard implements OnInit {
             }).catch(_ => {
                 this.message = "Error updating switch"
             })
+    }
+
+    goToSwitch(id: number): void {
+        this.router.navigate(['/switch', id])
     }
 }

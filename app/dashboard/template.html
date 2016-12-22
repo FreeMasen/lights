@@ -3,12 +3,11 @@
             <md-card class="switch" *ngFor="let switch of switches">
                 <md-card-title class="title-line">
                     <h3>{{switch.name}}</h3>
-                    <button md-mini-fab class="set-button" [routerLink]="['switch', switch.id]" color="accent">
+                    <button md-mini-fab class="set-button" (click)="goToSwitc(switch.id)" color="accent">
                         <md-icon>settings</md-icon>
                     </button>
                 </md-card-title>
                 <md-card-content>
-                    
                     <button md-raised-button class="on-button" [ngClass]="{'enabled': switch.on}" (click)="flip(switch, 1)">ON</button>
                     <button md-raised-button class="off-button" [ngClass]="{'enabled': !switch.on}" (click)="flip(switch, 0)">OFF</button>
                 </md-card-content>
