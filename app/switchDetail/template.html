@@ -1,8 +1,9 @@
 <button md-button color="accent">Back</button>
 <md-card class="detail-view">
-    <h1>{{switch.Name}}</h1>
+    <h1>{{selectedSwitch.name}}</h1>
     <h3 class="timers">Timers</h3>
-    <md-card class="timer" *ngFor="let timer of switch.timers">
+    <button md-mini-fab color="primary" (click)="addTimer()"><md-icon>add</md-icon></button>
+    <md-card class="timer" *ngFor="let timer of selectedSwitch.timers | async">
         <form>
             <input type="time" md-input placeholder="time"/>
         <select id="on-off">
