@@ -41,6 +41,7 @@ __decorate([
 ], SwitchDetail.prototype, "selectedSwitch", void 0);
 SwitchDetail = __decorate([
     core_1.Component({
+        moduleId: module.id,
         selector: '<switch-detail>',
         templateUrl: 'app/switchDetail/template.html',
         styleUrls: ['app/switchDetail/style.css']
