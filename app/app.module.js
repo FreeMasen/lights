@@ -10,11 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var forms_1 = require("@angular/forms");
 var material_1 = require("@angular/material");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var component_1 = require("./dashboard/component");
 var service_1 = require("./switcher/service");
+var component_2 = require("./switchDetail/component");
 var module_1 = require("./router/module");
 require("./rxjs-extensions");
 var AppModule = (function () {
@@ -27,12 +29,14 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             module_1.Router,
+            forms_1.FormsModule,
             http_1.HttpModule,
             material_1.MaterialModule.forRoot()
         ],
         declarations: [
             app_component_1.AppComponent,
-            component_1.Dashboard
+            component_1.Dashboard,
+            component_2.SwitchDetail
         ],
         providers: [
             service_1.Switcher
