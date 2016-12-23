@@ -17,7 +17,6 @@ import { Timer } from '../models/timer'
 export class SwitchDetail implements OnInit {
     @Input()
     selectedSwitch = <Switch>{}
-    pendingTimer: Timer
     constructor(
         private switcher: Switcher,
         private route: ActivatedRoute,
@@ -36,13 +35,7 @@ export class SwitchDetail implements OnInit {
     }
 
     addTimer() {
-        if (this.pendingTimer === undefined) {
-            return this.displayMessage('Please complete your timer form')
-        }
-        this.selectedSwitch.timers.push(
-            this.pendingTimer
-        )
-        this.pendingTimer = undefined
+        this.selectedSwitch.timers.push(new Timer())
     }
 
     displayMessage(message) {
