@@ -1,4 +1,4 @@
-<button md-button color="accent">Back</button>
+<button md-button color="primary" (click)="goBack()" id="back-button">Back</button>
 <md-card class="detail-view">
     <h1>{{selectedSwitch.name}}</h1>
     <div class="timers-title">
@@ -6,11 +6,24 @@
         <button md-mini-fab color="primary" id="add-button" (click)="addTimer()"><md-icon>add</md-icon></button>
     </div>
     <md-card class="timer" *ngFor="let timer of selectedSwitch.timers">
-        <form>
-            <input type="time" md-input placeholder="time"/>
-            <md-slide-toggle color="accent" [(ngModel)]="timer.isOn">
-                <p *ngIf="timer.isOn">On</p>
-                <p *ngIf="!timer.isOn">Off</p>
+        <form class="timer-settings">
+            <div class="time-wrapper">
+                <md-input-container align="start" class="time form-element">
+                    <input type="number" md-input placeholder="HH" [(ngModel)]="timer.time.hour" name="hour" class="hour"/>
+                </md-input-container>
+                <md-input-container align="start" class="time form-element">
+                    <input type="number" md-input placeholder="MM" [(ngModel)]="timer.time.minute" name="minute" class="minute" />
+                    <span md-prefix>:<span *ngIf="timer.time.minute < 10">0</span>
+                    </span>
+                </md-input-container>
+                <md-slide-toggle [(ngModel)]="timer.time.am" name="am" class="am switch form-element">
+                    <p class="am-choice" *ngIf="timer.time.am">AM</p>
+                    <p class="am-choice" *ngIf="!timer.time.am">PM</p>
+                </md-slide-toggle>
+            </div>
+            <md-slide-toggle color="accent" [(ngModel)]="timer.isOn" name="isOn" class="on-off switch form-element">
+                <p *ngIf="timer.isOn" class="switch-choice">On</p>
+                <p *ngIf="!timer.isOn" class="switch-choice">Off</p>
             </md-slide-toggle>
         </form>
     </md-card>
