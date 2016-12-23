@@ -1,0 +1,12 @@
+.timers-title {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row;
+    justify-content: space-around;
+    width: 50%;
+    margin: auto;
+}
+
+#add-button {
+    margin: auto 0;
+}
