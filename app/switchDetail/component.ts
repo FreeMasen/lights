@@ -6,6 +6,7 @@ import 'rxjs/add/operator/switchMap'
 
 import { Switcher } from '../switcher/service'
 import { Switch } from '../models/switch'
+import { Timer } from '../models/timer'
 
 @Component({
     //moduleId: module.id,
@@ -16,7 +17,7 @@ import { Switch } from '../models/switch'
 export class SwitchDetail implements OnInit {
     @Input()
     selectedSwitch = <Switch>{}
-    pendingTimer
+    pendingTimer: Timer
     constructor(
         private switcher: Switcher,
         private route: ActivatedRoute,
@@ -36,7 +37,11 @@ export class SwitchDetail implements OnInit {
 
     addTimer() {
         if (this.pendingTimer === undefined) {
+<<<<<<< HEAD
             return this.displayMessage('Please complete timer form')
+=======
+            return this.displayMessage('Please complete your timer form')
+>>>>>>> 3d8fd5c4e936510e17830155acd9053b2c1f26b0
         }
         this.selectedSwitch.timers.push(
             this.pendingTimer
