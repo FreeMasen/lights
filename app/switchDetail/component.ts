@@ -37,11 +37,7 @@ export class SwitchDetail implements OnInit {
 
     addTimer() {
         if (this.pendingTimer === undefined) {
-<<<<<<< HEAD
-            return this.displayMessage('Please complete timer form')
-=======
             return this.displayMessage('Please complete your timer form')
->>>>>>> 3d8fd5c4e936510e17830155acd9053b2c1f26b0
         }
         this.selectedSwitch.timers.push(
             this.pendingTimer
