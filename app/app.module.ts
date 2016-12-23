@@ -12,7 +12,7 @@ import { SwitchDetail } from './switchDetail/component'
 import { Router } from './router/module'
 
 import './rxjs-extensions'
-import 'hammerjs'
+//import 'hammerjs'
 
 @NgModule({
     imports: [
