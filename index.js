@@ -17,7 +17,28 @@ const mockLights = [
     }, 
     timers: [
         {isOn: false,
-        time: '20:00'}
+        time: {
+            hour: 11,
+            minute: 0,
+            am: false}},
+        {isOn: true,
+        time: {
+            hour: 6,
+            minute: 0,
+            am: true
+        }},
+        {isOn: false,
+        time: {
+            hour: 8,
+            minute: 0,
+            am: true
+        }},
+        {isOn: false,
+        time: {
+            hour: 4,
+            minute: 0,
+            am: false
+        }}
     ]},
     {name: 'Not In Use',
     id: 2,
@@ -28,7 +49,11 @@ const mockLights = [
     },
     timers: [
         {isOn: true,
-            time: '6:00'}
+            time: {
+                hour: 6,
+                minute: 0,
+                amPm: 'am'
+            }}
     ]},
     {name: 'Not In Use',
     id: 3,
