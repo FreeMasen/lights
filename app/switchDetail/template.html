@@ -34,10 +34,9 @@
                         </button>
                     </div>
                     <div class="on-off">
-                        <md-slide-toggle color="accent" [(ngModel)]="timer.isOn" name="isOn" class="switch form-element">
-                            <p *ngIf="timer.isOn" class="switch-choice">On</p>
-                            <p *ngIf="!timer.isOn" class="switch-choice">Off</p>
-                        </md-slide-toggle>
+                        <button md-mini-fab color="primary" class="switch form-element">
+                            <md-icon [ngClass]="{selected : timer.isOn, unselected: !timer.isOn}">lightbulb_outline</md-icon>
+                        </button>
                     </div>
                 </div>
             </form>
