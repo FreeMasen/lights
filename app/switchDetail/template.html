@@ -1,6 +1,6 @@
 
 <md-card class="detail-view">
-    <button md-button color="primary" (click)="goBack()" id="back-button">Back</button>
+    <button md-raised-button color="primary" (click)="goBack()" id="back-button">Back</button>
     <h1>{{selectedSwitch.name}}</h1>
     <div class="timers-title">
         <h3 class="timers">Timers</h3>
@@ -18,10 +18,9 @@
                         <span md-prefix>:<span *ngIf="timer.time.minute < 10">0</span>
                         </span>
                     </md-input-container>
-                    <md-button-toggle class="am" [(ngModel)]="timer.time.am" checked="timer.time.am" (click)="timer.time.am = !timer.time.am" name"am">
-                        <p *ngIf="timer.time.am">AM</p>
-                        <p *ngIf="!timer.time.am">PM</p>
-                    </md-button-toggle>
+                    <button md-mini-fab color="primary" class="am" (click)=updateTimeOfDay(timer) [ngClass]="{on: timer.time.am === true, off : timer.time.am === false}">
+                        <md-icon *ngIf="timer.time.am">wb_sunny</md-icon>
+                    </button>
                 </div>
                 <div class="on-off">
                     <md-slide-toggle color="accent" [(ngModel)]="timer.isOn" name="isOn" class="switch form-element">

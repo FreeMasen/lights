@@ -58,13 +58,8 @@
     width: 55px;
 }
 
-.md-button-toggle-checked {
-    color: #c2185b;
-}
-
 .am {
-    margin-left: 5px;
-    margin-top:10px;
+    margin: auto;
 }
 
 .switch-choice {
@@ -79,4 +74,12 @@
 .on-off {
     margin-left: auto;
     width: 25%;
+}
+
+.on {
+    color: rgba(255, 255, 255, .87);
+}
+
+.off {
+    color: #424242;
 }
