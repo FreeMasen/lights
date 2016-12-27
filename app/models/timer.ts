@@ -1,4 +1,10 @@
 export class Timer {
     isOn: boolean
-    time: Date
+    time: Time
+}
+
+export class Time {
+    hour: number
+    minute: number
+    am: boolean
 }
