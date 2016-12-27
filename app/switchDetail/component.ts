@@ -34,6 +34,10 @@ export class SwitchDetail implements OnInit {
             })
     }
 
+    updateTimeOfDay(timer: Timer) {
+        timer.time.am = !timer.time.am;
+    }
+
     addTimer() {
         this.selectedSwitch.timers.push(new Timer())
     }
