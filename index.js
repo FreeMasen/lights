@@ -26,18 +26,45 @@ const mockLights = [
             hour: 6,
             minute: 0,
             am: true
+        },
+        enabledDays: {
+            m: false,
+            t: false,
+            w: false,
+            r: false,
+            f: false,
+            s: false,
+            u: false
         }},
         {isOn: false,
         time: {
             hour: 8,
             minute: 0,
             am: true
+        },
+        enabledDays: {
+            m: false,
+            t: false,
+            w: false,
+            r: false,
+            f: false,
+            s: false,
+            u: false
         }},
         {isOn: false,
         time: {
             hour: 4,
             minute: 0,
             am: false
+        }, 
+        enabledDays: {
+            m: false,
+            t: false,
+            w: false,
+            r: false,
+            f: false,
+            s: false,
+            u: false
         }}
     ]},
     {name: 'Not In Use',
@@ -53,7 +80,16 @@ const mockLights = [
                 hour: 6,
                 minute: 0,
                 amPm: 'am'
-            }}
+            },
+        enabledDays: {
+            m: false,
+            t: false,
+            w: false,
+            r: false,
+            f: false,
+            s: false,
+            u: false
+        }}
     ]},
     {name: 'Not In Use',
     id: 3,
@@ -89,6 +125,9 @@ const mockLights = [
 
 app.use(express.static(`${__dirname}`))
 app.get("/dashboard", (req, res) => {
+    res.redirect('/')
+})
+app.get('/switch/:id', (req, res) => {
     res.redirect('/')
 })
 
