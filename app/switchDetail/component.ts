@@ -29,13 +29,20 @@ export class SwitchDetail implements OnInit {
                 return this.switcher.get(+params['id'])
             })
             .subscribe(sw => {
-                    console.log('setting selectedSwitch to ' + sw.id)
+                    console.log(sw)
                     this.selectedSwitch = sw
             })
     }
 
     updateTimeOfDay(timer: Timer) {
         timer.time.am = !timer.time.am;
+    }
+
+    updateEnabled(day: string, timer: Timer) {
+        console.log('updateEnabled')
+        console.log(day)
+        console.log(timer)
+        timer.days[day] = !timer.days[day]
     }
 
     addTimer() {

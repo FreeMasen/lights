@@ -1,6 +1,6 @@
 
 <md-card class="detail-view">
-    <button md-raised-button color="primary" (click)="goBack()" id="back-button">Back</button>
+    <button md-raised-button color="primary" (click)="goBack()" id="back-button"><md-icon>arrow_back</md-icon></button>
     <h1>{{selectedSwitch.name}}</h1>
     <div class="timers-title">
         <h3 class="timers">Timers</h3>
@@ -9,24 +9,36 @@
     <div id="timers">
         <md-card class="timer" *ngFor="let timer of selectedSwitch.timers">
             <form class="timer-settings">
-                <div class="time-wrapper">
-                    <md-input-container align="start" class="time form-element">
-                        <input type="number" md-input placeholder="HH" [(ngModel)]="timer.time.hour" name="hour" class="hour"/>
-                    </md-input-container>
-                    <md-input-container align="start" class="time form-element">
-                        <input type="number" md-input placeholder="MM" [(ngModel)]="timer.time.minute" name="minute" class="minute" />
-                        <span md-prefix>:<span *ngIf="timer.time.minute < 10">0</span>
-                        </span>
-                    </md-input-container>
-                    <button md-mini-fab color="primary" class="am" (click)=updateTimeOfDay(timer) [ngClass]="{on: timer.time.am === true, off : timer.time.am === false}">
-                        <md-icon *ngIf="timer.time.am">wb_sunny</md-icon>
-                    </button>
+                <div class="days settings-top">
+                    <button md-mini-fab color="primary" [ngClass]="{selected : timer.days.m, unselected : !timer.days.m}" (click)="updateEnabled('m', timer)" class="day-button">M</button>
+                    <button md-mini-fab color="primary" [ngClass]="{selected : timer.days.t, unselected : !timer.days.t}" (click)="updateEnabled('t', timer)" class="day-button">T</button>
+                    <button md-mini-fab color="primary" [ngClass]="{selected : timer.days.w, unselected : !timer.days.w}" (click)="updateEnabled('w', timer)" class="day-button">W</button>
+                    <button md-mini-fab color="primary" [ngClass]="{selected : timer.days.r, unselected : !timer.days.r}" (click)="updateEnabled('r', timer)" class="day-button">R</button>                    
+                    <button md-mini-fab color="primary" [ngClass]="{selected : timer.days.f, unselected : !timer.days.f}" (click)="updateEnabled('f', timer)" class="day-button">F</button>
+                    <button md-mini-fab color="primary" [ngClass]="{selected : timer.days.s, unselected : !timer.days.s}" (click)="updateEnabled('s', timer)" class="day-button">S</button>
+                    <button md-mini-fab color="primary" [ngClass]="{selected : timer.days.u, unselected : !timer.days.u}" (click)="updateEnabled('u', timer)" class="day-button">U</button>
                 </div>
-                <div class="on-off">
-                    <md-slide-toggle color="accent" [(ngModel)]="timer.isOn" name="isOn" class="switch form-element">
-                        <p *ngIf="timer.isOn" class="switch-choice">On</p>
-                        <p *ngIf="!timer.isOn" class="switch-choice">Off</p>
-                    </md-slide-toggle>
+                <div class="settings-bottom">
+                    <div class="time-wrapper">
+                        <md-input-container align="start" class="time form-element">
+                            <input type="number" md-input placeholder="HH" [(ngModel)]="timer.time.hour" name="hour" class="hour"/>
+                        </md-input-container>
+                        <md-input-container align="start" class="time form-element">
+                            <input type="number" md-input placeholder="MM" [(ngModel)]="timer.time.minute" name="minute" class="minute" />
+                            <span md-prefix>:<span *ngIf="timer.time.minute < 10">0</span>
+                            </span>
+                        </md-input-container>
+                        <button md-mini-fab color="primary" class="am" (click)=updateTimeOfDay(timer) [ngClass]="{selected: timer.time.am === true, unselected : timer.time.am === false}">
+                            <md-icon *ngIf="timer.time.am">wb_sunny</md-icon>
+                            <md-icon *ngIf="!timer.time.am">brightness_3</md-icon>
+                        </button>
+                    </div>
+                    <div class="on-off">
+                        <md-slide-toggle color="accent" [(ngModel)]="timer.isOn" name="isOn" class="switch form-element">
+                            <p *ngIf="timer.isOn" class="switch-choice">On</p>
+                            <p *ngIf="!timer.isOn" class="switch-choice">Off</p>
+                        </md-slide-toggle>
+                    </div>
                 </div>
             </form>
         </md-card>

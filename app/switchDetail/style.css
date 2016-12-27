@@ -41,7 +41,12 @@
     width: 100%;
 }
 
-.timer-settings, .time-wrapper {
+.timer-settings {
+    display: flex;
+    flex-flow: column;
+}
+
+.time-wrapper, .settings-bottom {
     display: flex;
     flex-direction: row;
     flex-flow: row;
@@ -76,10 +81,28 @@
     width: 25%;
 }
 
-.on {
+.days {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.day-button {
+    width: 36px;
+    height: 36px;
+
+}
+
+.day-button span {
+    line-height: unset;
+}
+
+.selected {
     color: rgba(255, 255, 255, .87);
 }
 
-.off {
+.unselected {
     color: #424242;
 }
