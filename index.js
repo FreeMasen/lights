@@ -7,7 +7,7 @@ const morgan = require('morgan')('dev', {
 app.use(morgan)
 const flip = require('./src/flip.js')
 
-const mockLights = = require('./src/lights.js')
+const mockLights = require('./src/lights.js')
 
 app.use(express.static(`${__dirname}`))
 app.get("/dashboard", (req, res) => {
