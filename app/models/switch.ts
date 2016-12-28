@@ -8,5 +8,6 @@ export class Switch {
         this.id = id
         this.on = on
         this.name = name
+        this.timers = []
     }
 }
