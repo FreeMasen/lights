@@ -47,6 +47,11 @@
     width: 25%;
 }
 
+.buttons button {
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
 .timer-settings {
     width: 100%;
 }
