@@ -1,12 +1,19 @@
 
 <md-card class="detail-view">
     <button md-raised-button color="primary" (click)="goBack()" id="back-button"><md-icon>arrow_back</md-icon></button>
-    <h1>{{selectedSwitch.name}}</h1>
+    <h1 id="title">{{selectedSwitch.name}}</h1>
     <div class="timers-title">
-        <h3 class="timers">Timers</h3>
-        <button md-mini-fab color="primary" id="add-button" (click)="addTimer()"><md-icon>add</md-icon></button>
+        <h3 id="timers">Timers</h3>
+        <div class="buttons">
+            <button md-mini-fab color="primary" id="add-button" (click)="addTimer()">
+                <md-icon>add</md-icon>
+            </button>
+            <button md-mini-fab color="primary" id="save-button" (click)="saveSwitch()">
+                <md-icon>save</md-icon>
+            </button>
+        </div>
     </div>
-    <div id="timers">
+    <div id="timers-list">
         <md-card class="timer" *ngFor="let timer of selectedSwitch.timers">
             <form class="timer-settings">
                 <div class="days settings-top">
@@ -34,7 +41,7 @@
                         </button>
                     </div>
                     <div class="on-off">
-                        <button md-mini-fab color="primary" class="switch form-element">
+                        <button md-mini-fab color="primary" class="switch form-element" (click)="changeDirection(timer)">
                             <md-icon [ngClass]="{selected : timer.isOn, unselected: !timer.isOn}">lightbulb_outline</md-icon>
                         </button>
                     </div>

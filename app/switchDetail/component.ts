@@ -9,7 +9,6 @@ import { Switch } from '../models/switch'
 import { Timer } from '../models/timer'
 
 @Component({
-    //moduleId: module.id,
     selector: '<switch-detail>',
     templateUrl: 'app/switchDetail/template.html',
     styleUrls: ['app/switchDetail/style.css']
@@ -22,6 +21,7 @@ export class SwitchDetail implements OnInit {
         private route: ActivatedRoute,
         private location: Location
     ) {}
+
     ngOnInit() :void {
         console.log('switchDetail.ngOnInit()')
         this.route.params
@@ -40,9 +40,15 @@ export class SwitchDetail implements OnInit {
 
     updateEnabled(day: string, timer: Timer) {
         console.log('updateEnabled')
-        console.log(day)
-        console.log(timer)
         timer.days[day] = !timer.days[day]
+    }
+
+    changeDirection(timer) {
+        timer.isOn = !timer.isOn
+    }
+
+    saveSwitch() {
+        console.log('saveTimer')
     }
 
     addTimer() {

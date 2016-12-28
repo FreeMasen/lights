@@ -2,30 +2,36 @@
     display: flex;
     flex-flow:column;
 }
+
 #back-button {
     margin-left:0;
     margin-top:0;
     width: 150px;
 }
+
 .timers-title {
     display: flex;
     flex-direction: row;
     flex-flow: row;
-    justify-content: space-around;
+    justify-content: space-betweem;
     width: 50%;
     margin: auto;
     font-size: 3rem;
 }
 
-.timers-title h3 {
-    font-size: 2.5rem;
+#title {
+    font-size: 3rem;
 }
 
 #timers {
+    font-size: 2rem;
+}
+
+#timers-list {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .timer {
@@ -33,8 +39,12 @@
     width: 33%;
 }
 
-#add-button {
+.buttons {
     margin: auto 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 25%;
 }
 
 .timer-settings {
@@ -77,7 +87,7 @@
 }
 
 .on-off {
-    margin-left: auto;
+    margin: auto;
     width: 25%;
 }
 
@@ -106,3 +116,4 @@
 .unselected {
     color: #424242;
 }
+
