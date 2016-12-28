@@ -1,3 +1,6 @@
+html {
+    background-color: #424242;
+}
 #app-view {
     width: 90%;
     margin: auto;
@@ -14,5 +17,4 @@
 
 #full-content {
     text-align: center;
-    
 }
