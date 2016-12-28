@@ -41,6 +41,15 @@ export class Switcher {
             }).catch(this.handleError)
     }
 
+    saveSwitch(sw: Switch) {
+        this.http.post(`/switch/${sw.id}`,sw)
+            .toPromise()
+            .then(value=> {
+                console.log('saveSwitch')
+                console.log(value)
+            }).catch(this.handleError)
+    }
+
     private handleError(err: any): Promise<any> {
         console.error('An error occured', err)
         return Promise.reject(err.message || err)
