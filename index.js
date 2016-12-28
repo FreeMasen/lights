@@ -1,13 +1,15 @@
 const express = require('express')
 const app = express()
+const bodyparser = require('body-parser')
 const morgan = require('morgan')('dev', {
     skip: function (req, res) { return req.method.toLowerCase() == 'get'
                                         && req.url.includes('node_modules')}
 })
 app.use(morgan)
+app.use(bodyparser.json())
 const flip = require('./src/flip.js')
 
-const mockLights = require('./src/lights.js')
+const lightManager = require('./src/lights.js')
 
 app.use(express.static(`${__dirname}`))
 app.get("/dashboard", (req, res) => {
@@ -18,10 +20,11 @@ app.get('/switch/:id', (req, res) => {
 })
 
 app.get('/switches', (req, res) => {
-    res.send(JSON.stringify(mockLights))
+    console.log(lightManager.lights)
+    res.send(JSON.stringify(lightManager.lights))
 })
 
-app.post('/:id/:newState', (req, res) => {
+app.post('/flip/:id/:newState', (req, res) => {
     let id
     let state
     if (req && req.params ) {
@@ -35,16 +38,32 @@ app.post('/:id/:newState', (req, res) => {
         res.status(404).send()
     }
     let selectedLight
-    mockLights.forEach((light) => {
+    lightManager.lights.forEach((light) => {
         if (light.id == id) {
             light.state = state
             selectedLight = light
         }
     })
-    console.log(`id: ${id}, selectedLight: ${selectedLight.id}`)
     flip(selectedLight.codes[state])
-    res.send(mockLights)
+    lightManager.saveLights()
+    res.send(JSON.stringify(lightManager.lights))
 })
+
+app.post('/switch/:id', (req, res) => {
+    let id
+    if (req && req.params) {
+        if (req.params.id) {
+            id = req.params.id
+        } else {
+            res.status(404).send()
+        }
+    } else {
+        res.status(404).send()
+    }
+    let sw = lightManager.find(id)
+    sw = req.body
+    lightManager.saveLights()
+}) 
 
 app.listen('9999', () => {
     console.log('listening on 9999')

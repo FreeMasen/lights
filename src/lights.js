@@ -1,12 +1,15 @@
 const fs = require('fs')
 
+
+
 function LightManager() {
     this._readInLights()
 }
 
 LightManager.prototype._readInLights = function(retry) {
+    console.log('_readInLights')
     try {
-        this.lights = fs.readFileSync('data/lights.json')
+        this.lights = fs.readFileSync('data/lights.json', 'utf8')
     } catch (e) {
         if (retry) throw e
         this._createDir()
@@ -16,6 +19,7 @@ LightManager.prototype._readInLights = function(retry) {
 }
 
 LightManager.prototype._createDir = function() {
+    console.log('_createDir')
     try {
         fs.mkdirSync('data')
     } catch (e) {
@@ -24,6 +28,7 @@ LightManager.prototype._createDir = function() {
 }
 
 LightManager.prototype._createDefaultFile = function() {
+    console.log('_createDefaultFile')
     const defaultDays = {
         m: false,
         t: false,
@@ -135,12 +140,22 @@ LightManager.prototype._createDefaultFile = function() {
 }
 
 LightManager.prototype.saveLights = function(newLights) {
+    console.log('saveLights')
     try {
-        fs.writeFileSync('data/lights.json', JSON.stringify(newLights))
+        fs.writeFileSync('data/lights.json', JSON.stringify(newLights || this.lights))
         this._readInLights()
     } catch (e) {
         conosle.log(e)
     }
 }
 
-module.exports = LightManager
+LightManager.prototype.find = function(id) {
+    console.log('find')
+    this.lights.forEach(light => {
+        if (light.id === id) {
+            return light
+        }
+    })
+}
+
+module.exports = new LightManager()
