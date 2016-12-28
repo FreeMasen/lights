@@ -1,7 +1,13 @@
 
 <md-card class="detail-view">
-    <button md-raised-button color="primary" (click)="goBack()" id="back-button"><md-icon>arrow_back</md-icon></button>
-    <h1 id="title">{{selectedSwitch.name}}</h1>
+    <button md-raised-button color="primary" (click)="goBack()" id="back-button">
+        <md-icon>arrow_back</md-icon>
+    </button>
+    <div id="switch-name">
+        <md-input-container align="center" id="title-container">
+            <input md-input id="title" type="text" name="title" [(ngModel)]="selectedSwitch.name" />
+        </md-input-container>
+    </div>
     <div class="timers-title">
         <h3 id="timers">Timers</h3>
         <div class="buttons">
@@ -30,7 +36,7 @@
                 </div>
                 <div class="settings-bottom">
                     <div class="time-wrapper">
-                        <md-input-container align="start" class="time form-element">
+                        <md-input-container align="end" class="time form-element">
                             <input type="number" md-input placeholder="HH" [(ngModel)]="timer.time.hour" name="hour" class="hour"/>
                         </md-input-container>
                         <md-input-container align="start" class="time form-element">

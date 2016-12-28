@@ -9,6 +9,12 @@
     width: 150px;
 }
 
+#switch-name {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
 .timers-title {
     display: flex;
     flex-direction: row;
@@ -18,9 +24,14 @@
     margin: auto;
 }
 
+#title-container {
+    width: 50%;
+}
+
 #title {
     font-size: 3rem;
     border: 0;
+    text-align: center;
 }
 
 #timers {
