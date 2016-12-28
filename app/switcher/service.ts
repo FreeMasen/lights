@@ -17,6 +17,7 @@ export class Switcher {
             .toPromise()
             .then(response => {
                 let data = response.json()
+                console.log(typeof data)
                 if (!data) throw new Error('no data in response')
                 return data as Switch[]
             })
