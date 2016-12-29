@@ -19,6 +19,7 @@ export class Switcher {
                 let data = response.json()
                 console.log(typeof data)
                 if (!data) throw new Error('no data in response')
+                if (typeof data == 'string') data = JSON.parse(data)
                 return data as Switch[]
             })
             .catch(this.handleError)
