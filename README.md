@@ -12,22 +12,24 @@ Nodejs webserver for interacting with RF switch plugs via a Raspberry Pi
     - The server side component utilizes Nodejs with Express, Morgan and Body-Parser all from the Express Organization
 
 ### UI
-![Dashboard](http://imgur.com/EuV3jwo)
 
-The dashboard displays a switch for each button on the remote. Clicking on the settings (gear) button will
-take you to the detail view.
 
-![Detail view](http://imgur.com/4gLNvvC)
-Here you see the detail view, the user can add new timers here or edit the time each timer is triggered.
+
 
 
 #### Dashboard
 
+![Dashboard](http://i.imgur.com/EuV3jwo.png)
 
+The dashboard displays a switch for each button on the remote. Clicking on the settings (gear) button will
+take you to the detail view.
 
 #### Detail View
 
 
+![Detail view](http://i.imgur.com/4gLNvvC.png)
+
+Here you see the detail view, the user can add new timers here or edit the time each timer is triggered.
 
 ### Server
 
