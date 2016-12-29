@@ -12,11 +12,13 @@ Nodejs webserver for interacting with RF switch plugs via a Raspberry Pi
     - The server side component utilizes Nodejs with Express, Morgan and Body-Parser all from the Express Organization
 
 ### UI
-``` javascript
-/*
-TODO: Add Screenshots of UI
-*/
-```
+![Dashboard](http://imgur.com/EuV3jwo)
+
+The dashboard displays a switch for each button on the remote. Clicking on the settings (gear) button will
+take you to the detail view.
+
+![Detail view](http://imgur.com/4gLNvvC)
+Here you see the detail view, the user can add new timers here or edit the time each timer is triggered.
 
 
 #### Dashboard
@@ -30,19 +32,20 @@ TODO: Add Screenshots of UI
 ### Server
 
 #### API Endpoints
-GET /switches
+
+##### GET /switches
 
 Provides the full list of 5 switches that are normally included in the RF Plug Set
 
-GET /switch/:id
+##### GET /switch/:id
 
 Provides the single switch indicated in the route parameter
 
-POST /flip/:id/:newState
+##### POST /flip/:id/:newState
 
 Requests a call to codesend with the switch ID and 0 for off and 1 for on as path parameters
 
-POST /switch/:id
+##### POST /switch/:id
 
 Provides the ID of the switch, as a path parameter, that will be replaced by the body content of the request
 
@@ -59,8 +62,7 @@ This module provides the list of lightswitches via the LightManager.
 /*
 TODO: provide more details here
 */
-
-
+```
 
 
 
