@@ -4,18 +4,14 @@ Nodejs webserver for interacting with RF switch plugs via a Raspberry Pi
 ### Dependencies
 - Codesend
     - This is a C executable that was written to allow for interaction with Raspberry Pi GPIO ports
-      you can find more informaiton about it here http://wiringpi.com/
+      you can find more informaiton about it [here](http://wiringpi.com/)
 - Angular 2
-    - The UI logic is writting in Typescript and leverages Angular 2 and Angular Material 2
+    - The UI logic is writtin in Typescript and leverages Angular 2 and Angular Material 2
     - These depenencies rely on many packages including RXJS and Hammer.js
 - Nodejs & Express
     - The server side component utilizes Nodejs with Express, Morgan and Body-Parser all from the Express Organization
 
 ### UI
-
-
-
-
 
 #### Dashboard
 
@@ -30,6 +26,16 @@ take you to the detail view.
 ![Detail view](http://i.imgur.com/4gLNvvC.png)
 
 Here you see the detail view, the user can add new timers here or edit the time each timer is triggered.
+
+#### Models
+
+The below items are object models that I am utilizing in the UI
+
+``` javascript
+/*
+TODO: add details about models
+*/
+```
 
 ### Server
 
