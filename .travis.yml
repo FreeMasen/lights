@@ -9,8 +9,8 @@ notification:
     email: 
         - false
 cache:
-    derectories:
-        
+    directories:
+        - node_modules
 addons: 
     apt:
         packages:
