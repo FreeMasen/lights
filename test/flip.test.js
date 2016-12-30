@@ -2,7 +2,8 @@ const flip = require('../src/flip.js')
 const os = require('os')
 
 describe('flip', function() {
-    if (os.platform != 'linux') {
+    if (os.platform() != 'linux' ||
+        os.platform() != "openbsd") {
         it.skip('wrong os, skipping flip test', function(){})
     } else {
         it('should fire without throwing', function() {
