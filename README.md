@@ -2,6 +2,8 @@
 Nodejs webserver for interacting with RF switch plugs via a Raspberry Pi
 
 ![travis](https://img.shields.io/travis/freemasen/lights.svg)
+[![codecov](https://codecov.io/gh/FreeMasen/lights/branch/master/graph/badge.svg)](https://codecov.io/gh/FreeMasen/lights)
+
 
 ### Dependencies
 - Codesend
