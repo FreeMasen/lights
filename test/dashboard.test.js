@@ -46,6 +46,7 @@ describe('Dashboard', function() {
                     assert(results[0] != results[2], `onButton classes were the same after click`)
                     assert(result[1] != result[3], 'offButton classes were the same after click')
                 })
+                .run()
         })
     })
 })
