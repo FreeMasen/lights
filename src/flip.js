@@ -13,9 +13,7 @@ function flip(code) {
             }
             console.log(stdout)
         })
-    } else {
-        console.log(`./ codesend ${code}`)
-    }
+    } 
 }
 
 module.exports = flip
