@@ -10,5 +10,9 @@ cache:
         - node_modules
 notification:
     email: false
+before_install:
+    - 'npm install -g typescript'
+before_script:
+    - 'tsc'
 script:
     "npm test"
