@@ -2,14 +2,7 @@ const LightManager = require('../src/lights.js')
 const assert = require('assert')
 const fs = require('fs')
 
-before(function() {
-    try {
-        fs.writeFileSync('data/lights.json.temp', fs.readFileSync('data/lights.json'))
-        fs.unlinkSync('data/lights.json')
-    } catch (e) {
-        throw e
-    }
-})
+
 
 describe('LightManager', function() {
     it('Should default when no data/lights.json exists', function() {
@@ -51,13 +44,4 @@ describe('LightManager', function() {
         assert(light2 != undefined, 'light2 was undefined')
         assert(light2.name == newName, `light2.name != newName: ${light2.name}`)
     })
-})
-
-after(function() {
-    try {
-        fs.writeFileSync('data/lights.json', fs.readFileSync('data/lights.json.temp'))
-        fs.unlinkSync('data/lights.json.temp')
-    } catch(e) {
-        console.log(e.message)
-    }
 })
