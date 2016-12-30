@@ -5,9 +5,6 @@ sudo: required
 branches:
     only: 
         - master
-cache:
-    directories:
-        - node_modules
 notification:
     email: false
 before_install:
