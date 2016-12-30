@@ -1,6 +1,8 @@
 # lights
 Nodejs webserver for interacting with RF switch plugs via a Raspberry Pi
 
+![travis](https://img.shields.io/travis/freemasen/lights.svg)
+
 ### Dependencies
 - Codesend
     - This is a C executable that was written to allow for interaction with Raspberry Pi GPIO ports
