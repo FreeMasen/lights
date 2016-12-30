@@ -9,7 +9,8 @@ app.use(morgan)
 app.use(bodyparser.json())
 const flip = require('./src/flip.js')
 
-const lightManager = require('./src/lights.js')
+const LightManager = require('./src/lights.js')
+const lightManager = new LightManager()
 
 app.use(express.static(`${__dirname}`))
 app.get("/dashboard", (req, res) => {
@@ -20,7 +21,6 @@ app.get('/switch/:id', (req, res) => {
 })
 
 app.get('/switches', (req, res) => {
-    console.log(lightManager.lights)
     res.send(JSON.stringify(lightManager.lights))
 })
 
