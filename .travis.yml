@@ -8,6 +8,9 @@ branches:
 notification:
     email: 
         - false
+cache:
+    derectories:
+        
 addons: 
     apt:
         packages:
