@@ -4,7 +4,7 @@
   "description": "Server/Website for turning on and off my lights",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test",
+    "test": "tsc && mocha test",
     "start": "tsc && concurrently  \"tsc -w\" \"node index.js\""
   },
   "author": "",
