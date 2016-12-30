@@ -27,34 +27,23 @@ describe('Dashboard', function() {
             new Nightmare()
                 .goto(url)
                 .wait('.switch')
-                .evaluate(function(){
-                    var ret = []
-                    var firstSwitch = document.querySelector('.switch')
-                    var onButton = document.querySelector('.on-button')
-                    var offButton = document.querySelector('.off-button')
-                    function clickNonEnabled() {
-                        if (onButton.className.includes('enabled')) {
-                            offButton.click()
-                        } else {
-                            onButton.click()
-                        }
-                    }
-                    function captureResult() {
-                        ret.push(onButton.className)
-                        ret.push(offButton.className)
-                    }
-                    clickNonEnabled()
-                    captureResult()
-                    clickNonEnabled()
-                    captureResult()
-                    return ret
-                })
-                .end()
+                .click('.off-button')
+                .evaluate(captureState)
                 .then(function(result) {
-                    assert(results[0] != results[2], `onButton classes were the same after click`)
-                    assert(result[1] != result[3], 'offButton classes were the same after click')
+                    assert(result[0] != result[1], `Both buttons should not be enabled`)
+                    assert(result[1].includes('enabled'), 'offButton should be enabled after click')
                     done()
+                })
+                .catch(function(err) {
+                    done(err)
                 })
         })
     })
 })
+
+function captureState() {
+    var ret = []
+    ret.push(document.querySelector('.on-button').className)
+    ret.push(document.querySelector('.off-button').className)
+    return ret
+}
