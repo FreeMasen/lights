@@ -2,7 +2,8 @@ const {exec} = require('child_process')
 const os = require('os')
 function flip(code) {
     if (os.platform() == 'linux' ||
-        os.platform() == 'openbsd') {
+        os.platform() == 'openbsd' ||
+        process.env.testing == undefined) {
         exec('./codesend', [code], (err, stdout, stderr) => {
             if (err) {
                 throw err
