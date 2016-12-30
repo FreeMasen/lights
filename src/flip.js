@@ -3,9 +3,13 @@ const os = require('os')
 function flip(code) {
     if (os.platform() == 'linux') {
         exec('./codesend', [code], (err, stdout, stderr) => {
-            console.log(err)
+            if (err) {
+                throw err
+            }
+            if (stderr) {
+                throw new Error(stderr)
+            }
             console.log(stdout)
-            console.log(stderr)
         })
     } else {
         console.log(`./ codesend ${code}`)
