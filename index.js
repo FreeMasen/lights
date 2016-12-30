@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express()
 const bodyparser = require('body-parser')
-const morgan = require('morgan')('dev', {
-    skip: function (req, res) { return req.method.toLowerCase() == 'get'
-                                        && req.url.includes('node_modules')}
-})
-app.use(morgan)
+// const morgan = require('morgan')('dev', {
+//     skip: function (req, res) { return req.method.toLowerCase() == 'get'
+//                                         && req.url.includes('node_modules')}
+// })
+// app.use(morgan)
 app.use(bodyparser.json())
 const flip = require('./src/flip.js')
 
