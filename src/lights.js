@@ -146,11 +146,11 @@ LightManager.prototype.saveLights = function(newLights) {
 }
 
 LightManager.prototype.find = function(id) {
-    this.lights.forEach(light => {
-        if (light.id === id) {
-            return light
+    for (i=0;i<this.lights.length;i++) {
+        if (this.lights[i].id == id) {
+            return this.lights[i]
         }
-    })
+    }
 }
 
 module.exports = LightManager
