@@ -35,7 +35,7 @@ export class Switcher {
     }
 
     flip(sw: Switch, direction: Direction): Promise<Switch> {
-        return this.http.post(`/${sw.id}/${direction}`, null)
+        return this.http.post(`/flip/${sw.id}/${direction}`, null)
             .toPromise()
             .then(_=> {
                 sw.on = direction == Direction.on
