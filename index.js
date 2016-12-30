@@ -38,7 +38,7 @@ app.post('/flip/:id/:newState', (req, res) => {
         res.status(404).send()
     }
     let selectedLight = lightManager.find(id)
-    if (selectedlight != undefined)  {
+    if (selectedLight != undefined)  {
         selectedLight.on = state == 1 
         flip(selectedLight.codes[state])
         lightManager.saveLights()
@@ -62,6 +62,6 @@ app.post('/switch/:id', (req, res) => {
     lightManager.saveLights()
 }) 
 
-app.listen('9999', () => {
-    console.log('listening on 9999')
+app.listen('9999', (err) => {
+    if (err) process.exit()
 })
