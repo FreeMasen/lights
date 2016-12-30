@@ -3,6 +3,9 @@ const Nightmare = require('nightmare')
 
 before(function() {
     require('../index.js')
+    process.on('uncaughtException', function(e) {
+        console.error(e.message)
+    })
 })
 
 describe('Dashboard', function() {
