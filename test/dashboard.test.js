@@ -1,7 +1,7 @@
 const assert = require('assert')
 const Nightmare = require('nightmare')
 
-Describe('Dashboard', function() {
+describe('Dashboard', function() {
     this.timeout(15000)
     var url = 'http://localhost:9999'
 
