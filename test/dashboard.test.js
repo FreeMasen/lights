@@ -6,7 +6,7 @@ before(function() {
 })
 
 describe('Dashboard', function() {
-    this.timeout(15000)
+    this.timeout(60000)
     var url = 'http://localhost:9999'
 
     describe('shoud load the correct form elements', function() {
@@ -23,7 +23,7 @@ describe('Dashboard', function() {
                     done()
                 })
         })
-        it.skip('clicking on the switch buttons should update class', function(done) {
+        it('clicking on the switch buttons should update class', function(done) {
             new Nightmare()
                 .goto(url)
                 .wait('.switch')
