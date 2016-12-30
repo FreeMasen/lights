@@ -37,15 +37,12 @@ app.post('/flip/:id/:newState', (req, res) => {
     } else {
         res.status(404).send()
     }
-    let selectedLight
-    lightManager.lights.forEach((light) => {
-        if (light.id == id) {
-            light.state = state
-            selectedLight = light
-        }
-    })
-    flip(selectedLight.codes[state])
-    lightManager.saveLights()
+    let selectedLight = lightManager.find(id)
+    if (selectedlight != undefined)  {
+        selectedLight.on = state == 1 
+        flip(selectedLight.codes[state])
+        lightManager.saveLights()
+    }
     res.send(JSON.stringify(lightManager.lights))
 })
 
