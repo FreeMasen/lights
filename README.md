@@ -7,8 +7,8 @@ Nodejs webserver for interacting with RF switch plugs via a Raspberry Pi
 
 ### Dependencies
 - Codesend
-    - This is a C executable that was written to allow for interaction with Raspberry Pi GPIO ports
-      you can find more informaiton about it [here](http://wiringpi.com/)
+    - This is a C++ executable that was written to allow for interaction with Raspberry Pi GPIO ports
+      you can find more informaiton about it [here](https://timleland.com/wireless-power-outlets/)
 - Angular 2
     - The UI logic is writtin in Typescript and leverages Angular 2 and Angular Material 2
     - These depenencies rely on many packages including RXJS and Hammer.js
