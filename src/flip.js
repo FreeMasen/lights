@@ -8,7 +8,9 @@ function flip(code) {
             if (err) {
                 //throw err
             }
-            
+            console.log(err.message)
+            console.log(stdout)
+            console.log(stderr)
             if (stderr) {
                 //throw new Error(stderr)
             }
