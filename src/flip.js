@@ -4,7 +4,7 @@ function flip(code) {
     if (os.platform() == 'linux' ||
         os.platform() == 'openbsd') {
         //TODO: troubleshoot calls to codesend
-        exec('./codesend', [code], (err, stdout, stderr) => {
+        exec(`./codesend ${code}`, [], (err, stdout, stderr) => {
             if (err) {
                 //throw err
             }
