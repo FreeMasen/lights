@@ -9,7 +9,7 @@
     "removeComments": false,
     "noImplicitAny": false,
     "types": [
-      "core-js", "node"
+      "hammerjs","core-js", "node"
     ]
   }
 }
