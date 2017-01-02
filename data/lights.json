@@ -1,1 +1,119 @@
-[{"name":"Christmas Tree","id":1,"on":true,"codes":{"0":"4543804","1":"4543795"},"timers":[{"isOn":true,"time":{"hour":5,"minute":30,"am":true},"days":{"m":false,"t":false,"w":false,"r":false,"f":false,"s":false,"u":false}},{"isOn":false,"time":{"hour":7,"minute":3,"am":true},"days":{"m":false,"t":false,"w":false,"r":false,"f":false,"s":false,"u":false}},{"isOn":true,"time":{"hour":5,"minute":0,"am":false},"days":{"m":false,"t":false,"w":false,"r":false,"f":false,"s":false,"u":false}},{"isOn":false,"time":{"hour":11,"minute":0,"am":false},"days":{"m":false,"t":false,"w":false,"r":false,"f":false,"s":false,"u":false}}]},{"name":"Not In Use","id":2,"codes":{"0":"44543948","1":"4543939"},"timers":[]},{"name":"Not In Use","id":2,"codes":{"0":"4544268","1":"4544359"},"timers":[]},{"name":"Breakfast Nook","id":4,"on":false,"codes":{"0":"4545804","1":"4545795"},"timers":[]},{"name":"Craft Room","id":5,"on":false,"codes":{"0":"4551948","1":"4551939"},"timers":[]}]
+[
+    {
+        "name": "Christmas Tree",
+        "id": 1,
+        "on": true,
+        "codes": {
+            "0": "4543804",
+            "1": "4543795"
+        },
+        "timers": [
+            {
+                "isOn": true,
+                "time": {
+                    "hour": 5,
+                    "minute": 30,
+                    "am": true
+                },
+                "days": {
+                    "m": false,
+                    "t": false,
+                    "w": false,
+                    "r": false,
+                    "f": false,
+                    "s": false,
+                    "u": false
+                }
+            },
+            {
+                "isOn": false,
+                "time": {
+                    "hour": 7,
+                    "minute": 3,
+                    "am": true
+                },
+                "days": {
+                    "m": false,
+                    "t": false,
+                    "w": false,
+                    "r": false,
+                    "f": false,
+                    "s": false,
+                    "u": false
+                }
+            },
+            {
+                "isOn": true,
+                "time": {
+                    "hour": 5,
+                    "minute": 0,
+                    "am": false
+                },
+                "days": {
+                    "m": false,
+                    "t": false,
+                    "w": false,
+                    "r": false,
+                    "f": false,
+                    "s": false,
+                    "u": false
+                }
+            },
+            {
+                "isOn": false,
+                "time": {
+                    "hour": 11,
+                    "minute": 0,
+                    "am": false
+                },
+                "days": {
+                    "m": false,
+                    "t": false,
+                    "w": false,
+                    "r": false,
+                    "f": false,
+                    "s": false,
+                    "u": false
+                }
+            }
+        ]
+    },
+    {
+        "name": "Not In Use",
+        "id": 2,
+        "codes": {
+            "0": "44543948",
+            "1": "4543939"
+        },
+        "timers": []
+    },
+    {
+        "name": "Not In Use",
+        "id": 2,
+        "codes": {
+            "0": "4544268",
+            "1": "4544359"
+        },
+        "timers": []
+    },
+    {
+        "name": "Breakfast Nook",
+        "id": 4,
+        "on": false,
+        "codes": {
+            "0": "4545804",
+            "1": "4545795"
+        },
+        "timers": []
+    },
+    {
+        "name": "Craft Room",
+        "id": 5,
+        "on": false,
+        "codes": {
+            "0": "4551948",
+            "1": "4551939"
+        },
+        "timers": []
+    }
+]
