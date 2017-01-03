@@ -1,9 +1,9 @@
 export class Days {
-    m: boolean
-    t: boolean
-    w: boolean
-    r: boolean
-    f: boolean
-    s: boolean
-    u: boolean
+    m: boolean = false
+    t: boolean = false
+    w: boolean = false
+    r: boolean = false
+    f: boolean = false
+    s: boolean = false
+    u: boolean = false
 }
