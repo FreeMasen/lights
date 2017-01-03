@@ -5,9 +5,8 @@ const url = 'http://localhost:9999'
 
 describe('UI.Switch Detail', function() {
     this.timeout(30000)
-    var nightmare = new Nightmare
     it('should render after clicking on the fab', function(done) {
-        nightmare
+        new Nightmare()
             .goto(url)
             .wait('.switch')
             .click('.set-button')
@@ -24,7 +23,7 @@ describe('UI.Switch Detail', function() {
             })
     })
     it('+ should increase the number of timers', function(done) {
-        nightmare
+        new Nightmare()
             .click('#add-button')
             .evaluate(function() {
                 return document.getElementsByClassName('timer').length
