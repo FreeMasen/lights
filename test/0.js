@@ -7,7 +7,7 @@ describe('Setup', function(){
             fs.unlinkSync('data/lights.json')
             
         } catch (e) {
-            throw e
+            console.log(e.message)
         }
     })
     it('server', function(){
