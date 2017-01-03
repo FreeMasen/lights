@@ -81,8 +81,6 @@ export class SwitchDetail implements OnInit {
         timer.isOn = !timer.isOn
     }
 
-
-
     addTimer() {
         this.selectedSwitch.timers.push(new Timer())
     }
