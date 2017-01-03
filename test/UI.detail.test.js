@@ -24,6 +24,9 @@ describe('UI.Switch Detail', function() {
     })
     it('+ should increase the number of timers', function(done) {
         new Nightmare()
+            .wait('.switch')
+            .click('.set-button')
+            .wait('#add-button')
             .click('#add-button')
             .evaluate(function() {
                 return document.getElementsByClassName('timer').length
