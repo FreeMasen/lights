@@ -1,10 +1,6 @@
 const assert = require('assert')
 const Nightmare = require('nightmare')
 
-before(function() {
-    require('../index.js')
-})
-
 describe('Dashboard', function() {
     this.timeout(60000)
     var url = 'http://localhost:9999'
