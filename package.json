@@ -4,7 +4,7 @@
   "description": "Server/Website for turning on and off my lights",
   "main": "index.js",
   "scripts": {
-    "test": "tsc && mocha test",
+    "test": "tsc && istanbul cover node_modules/mocha/bin/_mocha && codecov",
     "start": "tsc && concurrently  \"tsc -w\" \"node index.js\""
   },
   "author": "",
@@ -38,6 +38,8 @@
     "lite-server": "^2.2.2",
     "mocha": "^3.2.0",
     "typescript": "^2.1.4",
-    "nightmare": "2.9.0"
+    "nightmare": "2.9.0",
+    "istanbul":"0.4.5",
+    "codecov": "1.0.1"
   }
 }
