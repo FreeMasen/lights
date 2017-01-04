@@ -60,7 +60,9 @@ describe('Index', function() {
                 method: 'POST'
             }, (err, res, body) => {
                 if (err) return done(err)
+                assert(res.statusCode == 200, `/switch/1 response was not 200: ${res.statusCode}`)
                 if (typeof body == 'string') body = JSON.parse(body)
+                
                 assert(body === sw, `body was not equal to sw: ${body.name}`)
                 done()
             })

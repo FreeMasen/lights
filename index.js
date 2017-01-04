@@ -34,16 +34,26 @@ app.post('/flip/:id/:newState', (req, res) => {
 
 app.post('/switch/:id', (req, res) => {
     let id = Number.parseInt(req.params.id)
+    console.log(`post(/switch/${id})`)
     if (id == NaN) {
+        console.log('returning 404')
         return res.status(404).send()
     }
     if (req.body == undefined || req.body.name == undefined) {
+        console.log('returning 404 due to body missing or incorrectly formatted')
         return res.status(404).send()
     }
+    console.log('finding sw')
     let sw = lightManager.find(id)
+    console.log('overwritting sw')
     sw = req.body
+    console.log('stringifying sw')
+    let bd = JSON.stringify(sw)
+    console.log('sending bd')
+    res.send(bd)
+    console.log('saving lights')
     lightManager.saveLights()
-    res.send(JSON.stringify(sw))
+    
 })
 
 app.get('*', (req, res) => {
