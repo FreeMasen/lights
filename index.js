@@ -37,6 +37,9 @@ app.post('/switch/:id', (req, res) => {
     if (id == NaN) {
         return res.status(404).send()
     }
+    if (req.body == undefined || req.body.name == undefined) {
+        return res.status(404).send()
+    }
     let sw = lightManager.find(id)
     sw = req.body
     lightManager.saveLights()
