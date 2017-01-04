@@ -13,7 +13,6 @@ const lightManager = new LightManager()
 
 app.use(express.static(`${__dirname}`))
 
-
 app.get('/switches', (req, res) => {
     res.send(JSON.stringify(lightManager.lights))
 })
@@ -35,15 +34,9 @@ app.post('/flip/:id/:newState', (req, res) => {
 })
 
 app.post('/switch/:id', (req, res) => {
-    let id
-    if (req && req.params) {
-        if (req.params.id) {
-            id = req.params.id
-        } else {
-            res.status(404).send()
-        }
-    } else {
-        res.status(404).send()
+    let id = req.params.id
+    if (!Number.isInteger(id)) {
+        return res.status(404).send()
     }
     let sw = lightManager.find(id)
     sw = req.body
