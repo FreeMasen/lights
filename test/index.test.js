@@ -6,11 +6,8 @@ describe('Index', function() {
         request({
             method: "GET",
             uri: "http://localhost",
-            proxy: "http://proxy-al.wellsfargo.com:8080",
             port: 9999,
             path: "/goober",
-            strictSSL: false,
-            tunnel: false,
             followRedirect: false
         }, function(err, res, body) {
             console.log(res)
