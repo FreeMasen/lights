@@ -5,7 +5,7 @@ const morgan = require('morgan')('dev', {
     skip: function (req, res) { return res.statusCode < 400}
 })
 app.use(morgan)
-app.use(bodyparser.json())
+app.use(bodyparser.json({strict: false}))
 const flip = require('./src/flip.js')
 
 const LightManager = require('./src/lights.js')
