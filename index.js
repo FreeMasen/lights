@@ -19,11 +19,14 @@ app.get('/switches', (req, res) => {
 app.post('/flip/:id/:newState', (req, res) => {
     debug(`post/flip/${req.params.id}/${req.params.newState}`)
     let id = Number.parseInt(req.params.id)
+    debug(`parsed id to ${id}`)
     let state = Number.parseInt(req.params.newState)
-    if (id == NaN || state == NaN) {
+    debug(`parsed state to ${state}`)
+    if (Number.isNaN(id) || Number.isNaN(state)) {
         debug('returning 404')
         return res.status(404).send()
     }
+
     debug('setting selected light')
     let selectedLight = lightManager.find(id)
     if (selectedLight != undefined)  {
@@ -39,7 +42,7 @@ app.post('/flip/:id/:newState', (req, res) => {
 app.post('/switch/:id', (req, res) => {
     let id = Number.parseInt(req.params.id)
     debug(`post(/switch/${id})`)
-    if (id == NaN) {
+    if (Number.isNaN(id)) {
         debug('returning 404')
         return res.status(404).send()
     }
