@@ -58,7 +58,8 @@ describe('Index', function() {
                     "hour":5,"minute":30,"am":true},"days":{"m":false,"t":false,"w":false, "r":false,"f":false,"s":false,"u":false}}]}
             request('http://127.0.0.1:9999/switch/0',{
                 body: JSON.stringify(sw),
-                json: true
+                json: true,
+                method: 'POST'
             }, (err, res, body) => {
                 if (err) return done(err)
                 if (typeof body == 'string') body = JSON.parse(body)
@@ -71,7 +72,8 @@ describe('Index', function() {
                     "hour":5,"minute":30,"am":true},"days":{"m":false,"t":false,"w":false, "r":false,"f":false,"s":false,"u":false}}]}
             request('http://127.0.0.1:9999/switch/a',{
                 body: JSON.stringify(sw), 
-                json: true
+                json: true,
+                method: 'POST'
             } ,(err, res, body) => {
                 if (err) return done(err)
                 assert(res.statusCode == 404, `/switch/a did not return 404: ${res.statusCode}`)
