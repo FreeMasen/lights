@@ -5,9 +5,7 @@ describe('Index', function() {
     it('GET to undefined should redirect', function(done) {
         request({
             method: "GET",
-            uri: "http://localhost",
-            port: 9999,
-            path: "/goober",
+            uri: "http://127.0.0.1:9999/goober",
             followRedirect: false
         }, function(err, res, body) {
             console.log(res)
