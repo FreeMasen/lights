@@ -40,6 +40,7 @@ app.post('/switch/:id', (req, res) => {
     let sw = lightManager.find(id)
     sw = req.body
     lightManager.saveLights()
+    res.send(JSON.stringify(sw))
 })
 
 app.get('*', (req, res) => {
