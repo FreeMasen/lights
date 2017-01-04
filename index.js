@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const bodyparser = require('body-parser')
 const morgan = require('morgan')('dev', {
-    skip: function (req, res) { return res.statusCode < 400}
+    skip: function (req, res) { return process.env.travis && res.statusCode < 400}
 })
 app.use(morgan)
 app.use(bodyparser.json({strict: false}))
