@@ -7,16 +7,23 @@ describe('Index', function() {
             method: "GET",
             uri: "http://127.0.0.1:9999/goober",
             followRedirect: false
-        }, function(err, res, body) {
-            console.log(res)
-            console.log(body)
-            console.log(err)
-            done()
+        }, (err1, res1, body1) => {
+            if (err1) return done(err1)
+            assert(res1.statusCode == 302, `Response was not 302: ${res1.statusCode}`)
+            request({
+                method: "GET",
+                uri: "http://127.0.0.1:9999/oober/goober",
+                followRedirect: false
+            }, (err2, res2, body2) => {
+                if (err2) return done(err2)
+                assert(res2.statusCode == 302, `GET /oober/goober was not 302: ${res2.statusCode}`)
+                done()
+            })
         })
 
     })
-    it.skip('GET /switches shuold return json of switches', function(done) {
-        request.get('http://0.0.0.0:9999/switches', (err, res) => {
+    it('GET /switches shuold return json of switches', function(done) {
+        request.get('http://127.0.0.1:9999/switches', (err, res, body) => {
             console.log('/switches response')
             console.log(body)
             done(err)
