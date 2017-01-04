@@ -21,9 +21,7 @@ describe('Index', function() {
                     done()
                 })
             })
-
         })
-    
         it('/switches shuold return json of switches', function(done) {
             request.get('http://127.0.0.1:9999/switches', (err, res, body) => {
                 if (err) return done(err)
@@ -34,8 +32,6 @@ describe('Index', function() {
                 done()
             })
         })
-    })
-    describe('POST', function() {
         it('/flip/0/0 should return the list of lights', function(done) {
             request.post('http://127.0.0.1:9999/flip/0/0', (err, res, body) => {
                 if (err) return done(err)
@@ -46,6 +42,8 @@ describe('Index', function() {
                 done()
             })
         })
+    })
+    describe('POST', function() {
         it('/flip/a/b should return 404', function(done) {
             request.post('http://127.0.0.1:9999/flip/a/b', (err, res, body) => {
                 if (err) return done(err)
