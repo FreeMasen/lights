@@ -20,15 +20,20 @@ app.get('/switches', (req, res) => {
 app.post('/flip/:id/:newState', (req, res) => {
     let id = Number.parseInt(req.params.id)
     let state = Number.parseInt(req.params.newState)
+    console.log(`post /flip/${id}/${state}`)
     if (id == NaN || state == NaN) {
+        console.log('returning 404')
         return res.status(404).send()
     }
+    console.log('setting selected light')
     let selectedLight = lightManager.find(id)
     if (selectedLight != undefined)  {
+        console.log('flipping selected light')
         selectedLight.on = state == 1 
         flip(selectedLight.codes[state])
         lightManager.saveLights()
     }
+    console.log('sending back list of lights')
     res.send(JSON.stringify(lightManager.lights))
 })
 
@@ -41,6 +46,7 @@ app.post('/switch/:id', (req, res) => {
     }
     if (req.body == undefined || req.body.name == undefined) {
         console.log('returning 404 due to body missing or incorrectly formatted')
+        console.log(req.body)
         return res.status(404).send()
     }
     console.log('finding sw')

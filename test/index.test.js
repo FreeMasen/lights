@@ -51,7 +51,7 @@ describe('Index', function() {
                 done()
             })
         })
-        it('/switch/1 should return a single JSON switch', function(done) {
+        it('/switch/0 should return a single JSON switch', function(done) {
             let sw = {"name":"Modded Switch One","id":1,"on":true,"codes":{"0":"4543804","1":"4543795"},"timers":[{"isOn":true,"time":{
                     "hour":5,"minute":30,"am":true},"days":{"m":false,"t":false,"w":false, "r":false,"f":false,"s":false,"u":false}}]}
             request('http://127.0.0.1:9999/switch/0',{
@@ -63,7 +63,7 @@ describe('Index', function() {
                 assert(res.statusCode == 200, `/switch/1 response was not 200: ${res.statusCode}`)
                 if (typeof body == 'string') body = JSON.parse(body)
                 
-                assert(body === sw, `body was not equal to sw: ${body.name}`)
+                assert(body.name == sw.name, `body was not equal to sw: ${body.name}`)
                 done()
             })
         })
