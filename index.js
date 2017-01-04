@@ -1,9 +1,8 @@
 const express = require('express')
 const app = express()
 const bodyparser = require('body-parser')
-const morgan = require('morgan')('dev', {
-    skip: function (req, res) { return process.env.travis || res.statusCode < 400}
-})
+const debug = require('debug')('server')
+
 app.use(morgan)
 app.use(bodyparser.json({strict: false}))
 const flip = require('./src/flip.js')
@@ -14,50 +13,51 @@ const lightManager = new LightManager()
 app.use(express.static(`${__dirname}`))
 
 app.get('/switches', (req, res) => {
+    debug('get/switches')
     res.send(JSON.stringify(lightManager.lights))
 })
 
 app.post('/flip/:id/:newState', (req, res) => {
+    debug(`post/flip/${req.params.id}/${req.params.newState}`)
     let id = Number.parseInt(req.params.id)
     let state = Number.parseInt(req.params.newState)
-    console.log(`post /flip/${id}/${state}`)
     if (id == NaN || state == NaN) {
-        console.log('returning 404')
+        debug('returning 404')
         return res.status(404).send()
     }
-    console.log('setting selected light')
+    debug('setting selected light')
     let selectedLight = lightManager.find(id)
     if (selectedLight != undefined)  {
-        console.log('flipping selected light')
+        debug('flipping selected light')
         selectedLight.on = state == 1 
         flip(selectedLight.codes[state])
         lightManager.saveLights()
     }
-    console.log('sending back list of lights')
+    debug('sending back list of lights')
     res.send(JSON.stringify(lightManager.lights))
 })
 
 app.post('/switch/:id', (req, res) => {
     let id = Number.parseInt(req.params.id)
-    console.log(`post(/switch/${id})`)
+    debug(`post(/switch/${id})`)
     if (id == NaN) {
-        console.log('returning 404')
+        debug('returning 404')
         return res.status(404).send()
     }
     if (req.body == undefined || req.body.name == undefined) {
-        console.log('returning 404 due to body missing or incorrectly formatted')
-        console.log(req.body)
+        debug('returning 404 due to body missing or incorrectly formatted')
+        debug(req.body)
         return res.status(404).send()
     }
-    console.log('finding sw')
+    debug('finding sw')
     let sw = lightManager.find(id)
-    console.log('overwritting sw')
+    debug('overwritting sw')
     sw = req.body
-    console.log('stringifying sw')
+    debug('stringifying sw')
     let bd = JSON.stringify(sw)
-    console.log('sending bd')
+    debug('sending bd')
     res.send(bd)
-    console.log('saving lights')
+    debug('saving lights')
     lightManager.saveLights()
     
 })
