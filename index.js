@@ -24,18 +24,12 @@ app.get('/switches', (req, res) => {
 })
 
 app.post('/flip/:id/:newState', (req, res) => {
-    let id
-    let state
-    if (req && req.params ) {
-        if (req.params.id && req.params.newState) {
-            id = req.params.id
-            state = req.params.newState
-        } else {
-            res.status(404).send()
+    let id = req.params.id
+    let state = req.params.newState
+    if (!Number.isInteger(id) ||
+        !Number.isInteger(state)) {
+            return res.status(404).send()
         }
-    } else {
-        res.status(404).send()
-    }
     let selectedLight = lightManager.find(id)
     if (selectedLight != undefined)  {
         selectedLight.on = state == 1 
