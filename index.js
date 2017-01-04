@@ -12,12 +12,7 @@ const LightManager = require('./src/lights.js')
 const lightManager = new LightManager()
 
 app.use(express.static(`${__dirname}`))
-app.get("/dashboard", (req, res) => {
-    res.redirect('/')
-})
-app.get('/switch/:id', (req, res) => {
-    res.redirect('/')
-})
+
 
 app.get('/switches', (req, res) => {
     res.send(JSON.stringify(lightManager.lights))
@@ -53,7 +48,11 @@ app.post('/switch/:id', (req, res) => {
     let sw = lightManager.find(id)
     sw = req.body
     lightManager.saveLights()
-}) 
+})
+
+app.get('*', (req, res) => {
+    res.redirect('/')
+})
 
 app.listen('9999', (err) => {
     if (err) process.exit()
