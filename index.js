@@ -3,7 +3,6 @@ const app = express()
 const bodyparser = require('body-parser')
 const debug = require('debug')('server')
 
-app.use(morgan)
 app.use(bodyparser.json({strict: false}))
 const flip = require('./src/flip.js')
 
