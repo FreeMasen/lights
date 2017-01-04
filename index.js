@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const bodyparser = require('body-parser')
 const morgan = require('morgan')('dev', {
-    skip: function (req, res) { return process.env.travis && res.statusCode < 400}
+    skip: function (req, res) { return process.env.travis || res.statusCode < 400}
 })
 app.use(morgan)
 app.use(bodyparser.json({strict: false}))
@@ -20,7 +20,7 @@ app.get('/switches', (req, res) => {
 app.post('/flip/:id/:newState', (req, res) => {
     let id = Number.parseInt(req.params.id)
     let state = Number.parseInt(req.params.newState)
-    if (!id == NaN || state == NaN) {
+    if (id == NaN || state == NaN) {
         return res.status(404).send()
     }
     let selectedLight = lightManager.find(id)

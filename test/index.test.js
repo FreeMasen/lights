@@ -61,7 +61,7 @@ describe('Index', function() {
             }, (err, res, body) => {
                 if (err) return done(err)
                 if (typeof body == 'string') body = JSON.parse(body)
-                assert(body === sw, `body was not equal to sw: \n${body}\n${sw}`)
+                assert(body === sw, `body was not equal to sw: ${body.name}`)
                 done()
             })
         })
