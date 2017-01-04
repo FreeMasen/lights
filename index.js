@@ -18,12 +18,11 @@ app.get('/switches', (req, res) => {
 })
 
 app.post('/flip/:id/:newState', (req, res) => {
-    let id = req.params.id
-    let state = req.params.newState
-    if (!Number.isInteger(id) ||
-        !Number.isInteger(state)) {
-            return res.status(404).send()
-        }
+    let id = Number.parseInt(req.params.id)
+    let state = Number.parseInt(req.params.newState)
+    if (!id == NaN || state == NaN) {
+        return res.status(404).send()
+    }
     let selectedLight = lightManager.find(id)
     if (selectedLight != undefined)  {
         selectedLight.on = state == 1 
@@ -34,8 +33,8 @@ app.post('/flip/:id/:newState', (req, res) => {
 })
 
 app.post('/switch/:id', (req, res) => {
-    let id = req.params.id
-    if (!Number.isInteger(id)) {
+    let id = Number.parseInt(req.params.id)
+    if (id == NaN) {
         return res.status(404).send()
     }
     let sw = lightManager.find(id)
