@@ -24,9 +24,12 @@ describe('Index', function() {
     })
     it('GET /switches shuold return json of switches', function(done) {
         request.get('http://127.0.0.1:9999/switches', (err, res, body) => {
-            console.log('/switches response')
-            console.log(body)
-            done(err)
+            if (err) return done(err)
+            if (typeof body == string) body = JSON.parse(body)
+            assert(Array.isArray(body), `body was not an array: ${typeof body}`)
+            assert(body.length > 0, `body length <= 0: ${body.length}`)
+            assert(body[0].name == "Switch One", `body[0] was not Switch One: ${body[0]}`)
+            done()
         })
     })
 })
