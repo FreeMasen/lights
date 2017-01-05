@@ -88,7 +88,7 @@ describe('Index', function() {
             })
         })
         it('/switch/0 with bogus switch should return 409', function(done) {
-            request('http://127.0.0.1:9999/switch/0'{
+            request('http://127.0.0.1:9999/switch/0',{
                 method: 'POST',
                 body: '{id:6}',
                 json: true
