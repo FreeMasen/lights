@@ -44,4 +44,10 @@ describe('LightManager', function() {
         assert(light2 != undefined, 'light2 was undefined')
         assert(light2.name == newName, `light2.name != newName: ${light2.name}`)
     })
+    it('.saveLights() should catch an error', function() {
+        let lm = new LightManager()
+        fs.chmodSync('data/lights.json', 444)
+        lm.saveLights()
+        fs.chmodSync('data/lights.json', 777)
+    })
 })

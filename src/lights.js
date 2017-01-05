@@ -136,12 +136,15 @@ LightManager.prototype._createDefaultFile = function() {
     this.saveLights([switchOne, switchTwo, switchThree, switchFour, switchFive])
 }
 
-LightManager.prototype.saveLights = function(newLights) {
+LightManager.prototype.saveLights = function(newLights, retry) {
     try {
         fs.writeFileSync('data/lights.json', JSON.stringify(newLights || this.lights))
         this._readInLights()
     } catch (e) {
-        conosle.log(e)
+        if (!retry) {
+            process.nextTick(this.saveLights, newLights, 1)
+            console.log(e.message)
+        }
     }
 }
 
