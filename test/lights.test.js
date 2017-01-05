@@ -50,4 +50,9 @@ describe('LightManager', function() {
         lm.saveLights()
         fs.chmodSync('data/lights.json', 777)
     })
+    it('misc other functions should work', function() {
+        let lm = new LightManager()
+        lm._readInLights(1)
+        lm.find('q')
+    })
 })
