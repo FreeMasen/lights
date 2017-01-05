@@ -39,7 +39,7 @@ export class SwitchDetail implements OnInit {
     }
     
     saveSwitch() {
-        console.log('saveTimer')
+        this.switcher.saveSwitch(this.selectedSwitch)
     }
 
     revertChanges() {
@@ -80,8 +80,6 @@ export class SwitchDetail implements OnInit {
     changeDirection(timer) {
         timer.isOn = !timer.isOn
     }
-
-
 
     addTimer() {
         this.selectedSwitch.timers.push(new Timer())

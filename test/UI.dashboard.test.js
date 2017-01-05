@@ -1,17 +1,13 @@
 const assert = require('assert')
 const Nightmare = require('nightmare')
 
-before(function() {
-    require('../index.js')
-})
-
-describe('Dashboard', function() {
+describe('UI.Dashboard', function() {
     this.timeout(60000)
     var url = 'http://localhost:9999'
 
     describe('shoud load the correct form elements', function() {
         it('should find 5 switches', function(done) {
-            new Nightmare()
+            new Nightmare({executionTimeout: 3000})
                 .goto(url)
                 .wait('.switch')
                 .evaluate(function() {
@@ -24,17 +20,20 @@ describe('Dashboard', function() {
                 })
         })
         it('clicking on the switch buttons should update class', function(done) {
-            new Nightmare()
+            new Nightmare({executionTimeout: 3000})
                 .goto(url)
                 .wait('.switch')
                 .click('.off-button')
                 .evaluate(captureState)
+                .end()
                 .then(function(result) {
+                    assert(result.length > 0, `result.length was less than 1`)
                     assert(result[0] != result[1], `Both buttons should not be enabled`)
                     assert(result[1].includes('enabled'), 'offButton should be enabled after click')
                     done()
                 })
                 .catch(function(err) {
+      
                     done(err)
                 })
         })
