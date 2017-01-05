@@ -106,7 +106,7 @@ describe('Index', function() {
             proxy:false
         }, (err, res, body) => {
             if (err) return done(err)
-            assert(res.statusCode == 409, `/switch/1 with non-json did not return 409 4{res.statusCode}`)
+            assert(res.statusCode == 409, `/switch/1 with non-json did not return 409 ${res.statusCode}`)
             done()
         })
     })
