@@ -9,6 +9,7 @@ before(function(done) {
         if (typeof data != 'string') data = data.toString()
         let sws = JSON.parse(data)
         sw = sws[0]
+        done()
     })
 })
 
