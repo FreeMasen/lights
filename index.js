@@ -61,6 +61,8 @@ app.post('/switch/:id', (req, res) => {
             return res.status(409).send()
         }
     }
+    debug(body)
+    debug(req.body)
     if (id != body.id) {
         debug('returning 409 due to conflicting ids')
         debug(`${id} != ${body.id}`)
