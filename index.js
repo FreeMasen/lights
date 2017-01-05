@@ -43,26 +43,11 @@ app.post('/switch/:id', (req, res) => {
     process.env.debug = "server"
     let id = Number.parseInt(req.params.id)
     debug(`post(/switch/${id})`)
-    debug(req.body)
     if (Number.isNaN(id)) {
         debug('returning 404 id NaN')
         return res.status(404).send('id NaN')
     }
-    if (!req.body || !req.body.id) {
-        debug('!req.body')
-        return res.status(404).send('no req.body')
-    }
     let body = req.body
-    if (typeof body == 'string') {
-        try {
-            body = JSON.parse(body)
-        } catch(e){
-            debug('failed to parse body returning 409')
-            debug(e.message)
-            return res.status(409).send('failed to parse body returning 409')
-        }
-    }
-
     if (id != body.id) {
         debug('returning 409 due to conflicting ids')
         debug(`${id} != ${body.id}`)
