@@ -21,6 +21,7 @@ describe('Index', function() {
                 uri: "http://127.0.0.1:9999/goober",
                 followRedirect: false
             }, (err1, res1, body1) => {
+                console.log(res1.statusMessage)
                 if (err1) return done(err1)
                 assert(res1.statusCode == 302, `Response was not 302: ${res1.statusCode}`)
                 request({
@@ -28,6 +29,7 @@ describe('Index', function() {
                     uri: "http://127.0.0.1:9999/oober/goober",
                     followRedirect: false
                 }, (err2, res2, body2) => {
+                    console.log(res2.statusMessage)
                     if (err2) return done(err2)
                     assert(res2.statusCode == 302, `GET /oober/goober was not 302: ${res2.statusCode}`)
                     done()
@@ -36,6 +38,7 @@ describe('Index', function() {
         })
         it('/switches shuold return json of switches', function(done) {
             request.get('http://127.0.0.1:9999/switches', (err, res, body) => {
+                console.log(res.statusMessage)
                 if (err) return done(err)
                 if (typeof body == 'string') body = JSON.parse(body)
                 assert(Array.isArray(body), `switches did not return an array: ${typeof body}`)
@@ -46,6 +49,7 @@ describe('Index', function() {
         })
         it('/flip/0/0 should return the list of lights', function(done) {
             request.post('http://127.0.0.1:9999/flip/0/0', (err, res, body) => {
+                console.log(res.statusMessage)
                 if (err) return done(err)
                 if (typeof body == 'string') body = JSON.parse(body)
                 assert(Array.isArray(body), `flip did not return an array: ${typeof body}`)
@@ -58,6 +62,7 @@ describe('Index', function() {
     describe('POST', function() {
         it('/flip/a/b should return 404', function(done) {
             request.post('http://127.0.0.1:9999/flip/a/b', (err, res, body) => {
+                console.log(res.statusMessage)
                 if (err) return done(err)
                 assert(res.statusCode == 404, `/flip/a/b did not return 404: ${res.statusCode}`)
                 done()
@@ -70,7 +75,9 @@ describe('Index', function() {
                 method: 'POST',
                 proxy:false
             }, (err, res, body) => {
+                console.log(res.statusMessage)
                 if (err) return done(err)
+                console.log(res.statusMessage)
                 assert(res.statusCode == 200, `/switch/1 response was not 200: ${res.statusCode}`)
                 if (typeof body == 'string') body = JSON.parse(body)
                 
@@ -85,6 +92,7 @@ describe('Index', function() {
                 method: 'POST',
                 proxy:false
             } ,(err, res, body) => {
+                console.log(res.statusMessage)
                 if (err) return done(err)
                 assert(res.statusCode == 404, `/switch/a did not return 404: ${res.statusCode}`)
                 done()
@@ -92,6 +100,7 @@ describe('Index', function() {
         })
         it('/switch/1 with no body should return 404', function(done) {
             request.post('http://127.0.0.1:9999/switch/1', (err, res, body) => {
+                console.log(res.statusMessage)
                 if (err) return done(err)
                 assert(res.statusCode == 404, `/switch/0 with no body did not return 404: ${res.statusCode}`)
                 done()
@@ -105,6 +114,7 @@ describe('Index', function() {
                 json: true,
                 proxy:false
             }, function(err, res, body) {
+                console.log(res.statusMessage)
                 if (err) return done(err)
                 assert(res.statusCode == 409, `/switch/1 with bogus body did not return 409 ${res.statusCode}`)
                 done()
@@ -117,6 +127,7 @@ describe('Index', function() {
             json: true,
             proxy:false
         }, (err, res, body) => {
+            console.log(res.statusMessage)
             if (err) return done(err)
             assert(res.statusCode == 409, `/switch/1 with non-json did not return 409 4{res.statusCode}`)
             done()
