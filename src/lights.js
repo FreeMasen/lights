@@ -143,7 +143,6 @@ LightManager.prototype.saveLights = function(newLights, retry) {
     } catch (e) {
         if (!retry) {
             process.nextTick(this.saveLights, newLights, 1)
-            console.log(e.message)
         }
     }
 }
