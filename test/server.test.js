@@ -1,5 +1,16 @@
 const request = require('request')
 const assert = require('assert')
+const fs = require('fs')
+
+let sw
+
+before(function(done) {
+    fs.readFile('data/lights.json', (err, data) => {
+        if (typeof data != 'string') data = data.toString()
+        let sws = JSON.parse(data)
+        sw = sws[0]
+    })
+})
 
 describe('Index', function() {
     describe('GET', function() {
@@ -52,8 +63,6 @@ describe('Index', function() {
             })
         })
         it('/switch/0 should return a single JSON switch', function(done) {
-            let sw = {"name":"Modded Switch One","id":1,"on":true,"codes":{"0":"4543804","1":"4543795"},"timers":[{"isOn":true,"time":{
-                    "hour":5,"minute":30,"am":true},"days":{"m":false,"t":false,"w":false, "r":false,"f":false,"s":false,"u":false}}]}
             request('http://127.0.0.1:9999/switch/0',{
                 body: JSON.stringify(sw),
                 json: true,
@@ -68,8 +77,6 @@ describe('Index', function() {
             })
         })
         it('/switch/a should return 404', function(done) {
-            let sw = {"name":"Modded Switch One","id":1,"on":true,"codes":{"0":"4543804","1":"4543795"},"timers":[{"isOn":true,"time":{
-                    "hour":5,"minute":30,"am":true},"days":{"m":false,"t":false,"w":false, "r":false,"f":false,"s":false,"u":false}}]}
             request('http://127.0.0.1:9999/switch/a',{
                 body: JSON.stringify(sw), 
                 json: true,
@@ -87,10 +94,11 @@ describe('Index', function() {
                 done()
             })
         })
-        it('/switch/0 with bogus switch should return 409', function(done) {
+        it('/switch/0 with incorrect id should return 409', function(done) {
+            sw.id = 6
             request('http://127.0.0.1:9999/switch/0',{
                 method: 'POST',
-                body: '{"id":6}',
+                body: JSON.stringify(sw),
                 json: true
             }, function(err, res, body) {
                 if (err) return done(err)
@@ -98,5 +106,16 @@ describe('Index', function() {
                 done()
             })
         })
+    it('/switch/0 with non-json should return 409', function(done) {
+        request('http://127.0.0.1:9999/switch/0',{
+            method: 'POST',
+            body: "{id:41}",
+            json: true
+        }, (err, res, body) => {
+            if (err) return done(err)
+            assert(res.statusCode == 409. `/switch/0 with non-json did not return 409 4{res.statusCode}`)
+            done()
+        })
+    })
     })
 })
