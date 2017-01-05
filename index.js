@@ -46,15 +46,21 @@ app.post('/switch/:id', (req, res) => {
         debug('returning 404')
         return res.status(404).send()
     }
-    if (req.body == undefined || req.body.name == undefined) {
-        debug('returning 404 due to body missing or incorrectly formatted')
+    if (req.body == undefined) {
+        debug('returning 404 due to missing body')
         debug(req.body)
         return res.status(404).send()
+    }
+    let body = req.body
+    if (typeof body == 'string') body = JSON.parse(body) 
+    if (id != body.id) {
+        debug('returning 409 due to conflicting ids')
+        return res.status(409).send()
     }
     debug('finding sw')
     let sw = lightManager.find(id)
     debug('overwritting sw')
-    sw = req.body
+    sw = body
     debug('stringifying sw')
     let bd = JSON.stringify(sw)
     debug('sending bd')
