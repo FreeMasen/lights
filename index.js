@@ -47,7 +47,7 @@ app.post('/switch/:id', (req, res) => {
         debug('returning 404')
         return res.status(404).send()
     }
-    if (req.body == undefined) {
+    if (req.body == {}) {
         debug('returning 404 due to missing body')
         return res.status(404).send()
     }
