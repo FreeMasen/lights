@@ -27,7 +27,7 @@ describe('Index', function() {
                 })
             })
         })
-        it('/switches shuold return json of switches', function(done) {
+        it('/switches should return json of switches', function(done) {
             request.get('http://127.0.0.1:9999/switches', (err, res, body) => {
                 if (err) return done(err)
                 if (typeof body == 'string') body = JSON.parse(body)
@@ -37,6 +37,8 @@ describe('Index', function() {
                 done()
             })
         })
+    })
+    describe('POST', function() {
         it('/flip/1/0 should return the list of lights', function(done) {
             request.post('http://127.0.0.1:9999/flip/1/0', (err, res, body) => {
                 if (err) return done(err)
@@ -47,8 +49,6 @@ describe('Index', function() {
                 done()
             })
         })
-    })
-    describe('POST', function() {
         it('/flip/a/b should return 404', function(done) {
             request.post('http://127.0.0.1:9999/flip/a/b', (err, res, body) => {
                 if (err) return done(err)
@@ -57,14 +57,16 @@ describe('Index', function() {
             })
         })
         it('/switch/1 should return a single JSON switch', function(done) {
+            if (sw.id != 1) sw.id = 1
+            let bd = JSON.stringify(sw)
             request('http://127.0.0.1:9999/switch/1',{
-                body: JSON.stringify(sw),
+                body: bd,
                 json: true,
                 method: 'POST',
                 proxy:false
             }, (err, res, body) => {
                 if (err) return done(err)
-                assert(res.statusCode == 200, `/switch/1 response was not 200: ${res.statusCode}`)
+                assert(res.statusCode == 200, `/switch/1 response was not 200: ${res.statusCode} ${body}`)
                 if (typeof body == 'string') body = JSON.parse(body)
                 
                 assert(body.id == sw.id, `body was not equal to sw: ${body.name} ${sw.name}`)
