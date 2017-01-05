@@ -40,6 +40,7 @@ app.post('/flip/:id/:newState', (req, res) => {
 })
 
 app.post('/switch/:id', (req, res) => {
+    process.env.debug = "server"
     let id = Number.parseInt(req.params.id)
     debug(`post(/switch/${id})`)
     if (Number.isNaN(id)) {
@@ -48,7 +49,6 @@ app.post('/switch/:id', (req, res) => {
     }
     if (req.body == undefined) {
         debug('returning 404 due to missing body')
-        debug(req.body)
         return res.status(404).send()
     }
     let body = req.body
@@ -57,11 +57,13 @@ app.post('/switch/:id', (req, res) => {
             body = JSON.parse(body) 
         } catch(e){
             debug('failed to parse body returning 409')
+            debug(e.message)
             return res.status(409).send()
         }
     }
     if (id != body.id) {
         debug('returning 409 due to conflicting ids')
+        debug(`${id} != ${body.id}`)
         return res.status(409).send()
     }
     debug('finding sw')
