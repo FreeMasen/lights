@@ -39,7 +39,7 @@ export class SwitchDetail implements OnInit {
     }
     
     saveSwitch() {
-        console.log('saveTimer')
+        this.switcher.saveSwitch(this.selectedSwitch)
     }
 
     revertChanges() {
