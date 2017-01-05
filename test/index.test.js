@@ -80,7 +80,7 @@ describe('Index', function() {
                 done()
             })
         })
-        it('/switch/0 with not body should return 404', function(done) {
+        it('/switch/0 with no body should return 404', function(done) {
             request.post('http://127.0.0.1:9999/switch/0', (err, res, body) => {
                 if (err) return done(err)
                 assert(res.statusCode == 404, `/switch/0 with no body did not return 404: ${res.statusCode}`)
@@ -90,7 +90,7 @@ describe('Index', function() {
         it('/switch/0 with bogus switch should return 409', function(done) {
             request('http://127.0.0.1:9999/switch/0',{
                 method: 'POST',
-                body: '{id:6}',
+                body: '{"id":6}',
                 json: true
             }, function(err, res, body) {
                 if (err) return done(err)

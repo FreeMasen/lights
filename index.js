@@ -52,7 +52,14 @@ app.post('/switch/:id', (req, res) => {
         return res.status(404).send()
     }
     let body = req.body
-    if (typeof body == 'string') body = JSON.parse(body) 
+    if (typeof body == 'string') {
+        try {
+            body = JSON.parse(body) 
+        } catch(e){
+            debug('failed to parse body returning 409')
+            return res.status(409).send()
+        }
+    }
     if (id != body.id) {
         debug('returning 409 due to conflicting ids')
         return res.status(409).send()
