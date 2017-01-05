@@ -1,7 +1,7 @@
 const request = require('request')
 const assert = require('assert')
 const fs = require('fs')
-
+request.defaults({proxy:false})
 let sw
 
 before(function(done) {
@@ -63,11 +63,12 @@ describe('Index', function() {
                 done()
             })
         })
-        it('/switch/0 should return a single JSON switch', function(done) {
-            request('http://127.0.0.1:9999/switch/0',{
+        it('/switch/1 should return a single JSON switch', function(done) {
+            request('http://127.0.0.1:9999/switch/1',{
                 body: JSON.stringify(sw),
                 json: true,
-                method: 'POST'
+                method: 'POST',
+                proxy:false
             }, (err, res, body) => {
                 if (err) return done(err)
                 assert(res.statusCode == 200, `/switch/1 response was not 200: ${res.statusCode}`)
@@ -81,40 +82,43 @@ describe('Index', function() {
             request('http://127.0.0.1:9999/switch/a',{
                 body: JSON.stringify(sw), 
                 json: true,
-                method: 'POST'
+                method: 'POST',
+                proxy:false
             } ,(err, res, body) => {
                 if (err) return done(err)
                 assert(res.statusCode == 404, `/switch/a did not return 404: ${res.statusCode}`)
                 done()
             })
         })
-        it('/switch/0 with no body should return 404', function(done) {
-            request.post('http://127.0.0.1:9999/switch/0', (err, res, body) => {
+        it('/switch/1 with no body should return 404', function(done) {
+            request.post('http://127.0.0.1:9999/switch/1', (err, res, body) => {
                 if (err) return done(err)
                 assert(res.statusCode == 404, `/switch/0 with no body did not return 404: ${res.statusCode}`)
                 done()
             })
         })
-        it('/switch/0 with incorrect id should return 409', function(done) {
+        it('/switch/1 with incorrect id should return 409', function(done) {
             sw.id = 6
             request('http://127.0.0.1:9999/switch/0',{
                 method: 'POST',
                 body: JSON.stringify(sw),
-                json: true
+                json: true,
+                proxy:false
             }, function(err, res, body) {
                 if (err) return done(err)
-                assert(res.statusCode == 409, `/switch/0 with bogus body did not return 409 ${res.statusCode}`)
+                assert(res.statusCode == 409, `/switch/1 with bogus body did not return 409 ${res.statusCode}`)
                 done()
             })
         })
     it('/switch/0 with non-json should return 409', function(done) {
-        request('http://127.0.0.1:9999/switch/0',{
+        request('http://127.0.0.1:9999/switch/1',{
             method: 'POST',
             body: "{id:41}",
-            json: true
+            json: true,
+            proxy:false
         }, (err, res, body) => {
             if (err) return done(err)
-            assert(res.statusCode == 409. `/switch/0 with non-json did not return 409 4{res.statusCode}`)
+            assert(res.statusCode == 409, `/switch/1 with non-json did not return 409 4{res.statusCode}`)
             done()
         })
     })
