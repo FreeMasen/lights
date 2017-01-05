@@ -74,7 +74,7 @@ describe('Index', function() {
                 assert(res.statusCode == 200, `/switch/1 response was not 200: ${res.statusCode}`)
                 if (typeof body == 'string') body = JSON.parse(body)
                 
-                assert(body.name == sw.name, `body was not equal to sw: ${body.name}`)
+                assert(body == sw, `body was not equal to sw: ${body.name}`)
                 done()
             })
         })
