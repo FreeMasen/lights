@@ -52,7 +52,7 @@ app.post('/switch/:id', (req, res) => {
     try {
         body = JSON.parse(req.body)
     } catch(e) {
-        debut('sending 409 due to invalid JSON')
+        debug('sending 409 due to invalid JSON')
         return res.status(409).send('invalid JSON')
     }
     if (id != body.id) {
