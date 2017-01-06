@@ -29,12 +29,13 @@ app.post('/flip/:id/:newState', (req, res) => {
 
     debug('setting selected light')
     let selectedLight = lightManager.find(id)
-    if (selectedLight != undefined)  {
-        debug('flipping selected light')
-        selectedLight.on = state == 1 
-        flip(selectedLight.codes[state])
-        lightManager.saveLights()
+    if (!selectedLight) {
+        return res.status(404).send('Light not found')
     }
+    debug('flipping selected light')
+    selectedLight.on = state == 1 
+    flip(selectedLight.codes[state])
+    lightManager.saveLights()
     debug('sending back list of lights')
     res.send(JSON.stringify(lightManager.lights))
 })
@@ -78,5 +79,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen('9999', (err) => {
-    if (err) process.exit()
+    if (err) process.exit() /* istanbul ignore if */  
 })
