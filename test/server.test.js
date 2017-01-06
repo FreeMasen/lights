@@ -56,6 +56,13 @@ describe('Index', function() {
                 done()
             })
         })
+        it('/flip/100/0 should return 404', function(done) {
+            request.post('http://127.0.0.1:9999/flip/100/0', (err, res, body) => {
+                if (err) return done(err)
+                assert(res.statusCode == 404, `/flip/100/0 did not return 404 ${res.statusCode}: ${res.body}`)
+                done()
+            })
+        })
         it('/switch/1 should return a single JSON switch', function(done) {
             if (sw.id != 1) sw.id = 1
             let bd = JSON.stringify(sw)
@@ -98,17 +105,17 @@ describe('Index', function() {
                 done()
             })
         })
-    it('/switch/0 with non-json should return 409', function(done) {
-        request('http://127.0.0.1:9999/switch/1',{
-            method: 'POST',
-            body: "{id:41}",
-            json: true,
-            proxy:false
-        }, (err, res, body) => {
-            if (err) return done(err)
-            assert(res.statusCode == 409, `/switch/1 with non-json did not return 409 ${res.statusCode}`)
-            done()
+        it('/switch/0 with non-json should return 409', function(done) {
+            request('http://127.0.0.1:9999/switch/1',{
+                method: 'POST',
+                body: "{id:41}",
+                json: true,
+                proxy:false
+            }, (err, res, body) => {
+                if (err) return done(err)
+                assert(res.statusCode == 409, `/switch/1 with non-json did not return 409 ${res.statusCode}`)
+                done()
+            })
         })
-    })
     })
 })
