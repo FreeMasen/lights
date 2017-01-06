@@ -79,5 +79,6 @@ app.get('*', (req, res) => {
 })
 
 app.listen('9999', (err) => {
-    if (err) process.exit() /* istanbul ignore if */  
+    /* istanbul ignore if */  
+    if (err) process.exit() 
 })

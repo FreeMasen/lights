@@ -1,7 +1,5 @@
 const fs = require('fs')
 
-
-
 function LightManager() {
     this._readInLights()
 }
@@ -10,6 +8,7 @@ LightManager.prototype._readInLights = function(retry) {
     try {
         this.lights = JSON.parse(fs.readFileSync('data/lights.json', 'utf8'))
     } catch (e) {
+        /* istanbul ignore if */  
         if (retry) throw e
         this._createDir()
         this._createDefaultFile()
