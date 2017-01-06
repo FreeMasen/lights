@@ -48,7 +48,6 @@ describe('LightManager', function() {
         let lm = new LightManager()
         fs.chmodSync('data/lights.json', 444)
         lm.saveLights()
-        fs.chmodSync('data/lights.json', 777)
     })
     it('misc other functions should work', function() {
         let lm = new LightManager()
