@@ -3,11 +3,12 @@ const app = express()
 const bodyparser = require('body-parser')
 const debug = require('debug')('server')
 
+const sun = require('./src/sun.js')
+
 app.use(bodyparser.json({strict: false}))
 const flip = require('./src/flip.js')
 
 const LightManager = require('./src/lights.js')
-const lightManager = new LightManager()
 
 app.use(express.static(`${__dirname}`))
 
@@ -39,31 +40,12 @@ app.post('/flip/:id/:newState', (req, res) => {
     res.send(JSON.stringify(lightManager.lights))
 })
 
-app.post('/switch/:id', (req, res) => {
-    process.env.debug = "server"
-    let id = Number.parseInt(req.params.id)
-    debug(`post(/switch/${id})`)
-    if (Number.isNaN(id)) {
-        debug('returning 404 id NaN')
-        return res.status(404).send('id NaN')
-    }
-    let body = req.body
-    if (id != body.id) {
-        debug('returning 409 due to conflicting ids')
-        debug(`${id} != ${body.id}`)
-        return res.status(409).send('ids do not match')
-    }
-    debug('finding sw')
-    let sw = lightManager.find(id)
-    debug('overwritting sw')
-    sw = body
-    debug('stringifying sw')
-    let bd = JSON.stringify(sw)
-    debug('sending bd')
-    res.send(bd)
-    debug('saving lights')
-    lightManager.saveLights()
-    
+app.post('/new/switch/', (req, res) => {
+    LightManager.add(req.body)
+})
+
+app.put('/switch/:id', (req, res) => {
+    LightManager.update(req.body)
 })
 
 app.get('*', (req, res) => {
